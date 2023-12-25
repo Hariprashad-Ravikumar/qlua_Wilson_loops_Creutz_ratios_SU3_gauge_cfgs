@@ -1,0 +1,653 @@
+require("stdlib")
+require("qcd")
+require "hex-smear"
+
+qcd.Nc = 3
+
+
+latsize = {32,32,32,96}
+L = qcd.lattice(latsize)
+
+
+volume = 1
+for i = 0, #L - 1 do
+  volume = volume * L[i]
+end
+
+three_volume = 1
+for i = 0, #L - 2 do
+  three_volume = three_volume * L[i]
+end
+
+function open_qdpc_read(L, name)
+  local qdp_r = qcd.qdpc.Reader(L, name)
+  return qdp_r
+end
+
+function load_qdpc_gauge(L, name)
+  local qdp_r, finfo = open_qdpc_read(L, name)
+  local gauge, rinfo = qdp_r:ColorMatrix(4)
+  qdp_r:close()
+  return gauge, finfo, rinfo
+end
+
+
+
+function wilson_loop(U, x, y, i, j)
+    local N = (x + y)
+    local link_1 = {}
+    local link_2 = {}
+    
+    -- lets build list of link_1
+    link_1[1] = U[i + 1]
+    if x > 1 then
+        for x_d = 2, x do
+            link_1[x_d] = link_1[x_d - 1]:shift(i, "from_forward")
+        end
+    end
+    
+    local link_1_x_p1 = U[j + 1]
+    for x_d = 1, x do
+      link_1_x_p1 = link_1_x_p1:shift(i, "from_forward")
+    end 
+    link_1[x + 1] = link_1_x_p1
+    
+    if y > 1 then
+        for y_r = 2, y do
+            link_1[x + y_r] = link_1[x + y_r - 1]:shift(j, "from_forward")
+        end
+    end
+    
+    -- lets build list of link_2
+    link_2[1] = U[j + 1]
+    if y > 1 then
+        for y_l = 2, y do
+            link_2[y_l] = link_2[y_l - 1]:shift(j, "from_forward")
+        end
+    end
+    
+    local link_2_y_p1 = U[i + 1]
+    for y_l = 1, y do
+      link_2_y_p1 = link_2_y_p1:shift(j, "from_forward")
+    end 
+    link_2[y + 1] = link_2_y_p1
+    
+    if x > 1 then
+        for x_t = 2, x do
+            link_2[y + x_t] = link_2[y + x_t - 1]:shift(i, "from_forward")
+        end
+    end
+    
+    -- attach :adjoin() to all elements of link_2
+    for a = 1, #link_2 do
+        link_2[a] = link_2[a]:adjoin()
+    end
+    
+    -- Defining Wij as a product of all elements in link_1 and link_2 in right order
+    
+    local Wij_1 = link_1[1]
+    for m = 2, #link_1 do
+      Wij_1 = Wij_1 * link_1[m]
+    end
+    
+    local Wij_2 = link_2[1]
+    for n = 2, #link_2 do
+      Wij_2 = link_2[n] * Wij_2
+    end
+    
+    local Wij = (Wij_1 * Wij_2):trace():real()
+    return Wij:sum() / (volume * qcd.Nc)
+end
+
+-- Computing Wilson loops
+
+function wilson_1_x_1_loop(U, i, j)
+  local U_1 = U[i+1]
+  local U_2 = U[j+1]:shift(i, "from_forward")
+  local U_3 = U[i+1]:shift(j, "from_forward")
+  local U_4 = U[j+1]
+  local Wij = (U_1 * U_2 * U_3:adjoin() * U_4:adjoin()):trace():real()
+  return Wij:sum() / (volume * qcd.Nc)
+end
+
+function wilson_1_x_2_loop(U, i, j)
+  local U_1 = U[i+1]
+  local U_2 = U[j+1]:shift(i, "from_forward")
+  local U_3 = U[j+1]:shift(i, "from_forward"):shift(j, "from_forward")
+  local U_4 = (U[i+1]:shift(j, "from_forward"):shift(j, "from_forward"))
+  local U_5 = (U[j+1]:shift(j, "from_forward"))
+  local U_6 = (U[j+1])
+  local Wij = (U_1*U_2*U_3*U_4:adjoin()*U_5:adjoin()*U_6:adjoin()):trace():real()
+  return Wij:sum() / (volume * qcd.Nc)
+end
+
+
+function wilson_1_x_3_loop(U, i, j)
+  local U_1 = U[i+1]
+  local U_2 = U[j+1]:shift(i, "from_forward")
+  local U_3 = U[j+1]:shift(i, "from_forward"):shift(j, "from_forward")
+  local U_4 = U[j+1]:shift(i, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward")
+  local U_5 = (U[i+1]:shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"))
+  local U_6 = (U[j+1]:shift(j, "from_forward"):shift(j, "from_forward"))
+  local U_7 = (U[j+1]:shift(j, "from_forward"))
+  local U_8 = (U[j+1])
+  local Wij = (U_1*U_2*U_3*U_4*U_5:adjoin()*U_6:adjoin()*U_7:adjoin()*U_8:adjoin()):trace():real()
+  return Wij:sum() / (volume * qcd.Nc)
+end
+
+function wilson_1_x_4_loop(U, i, j)
+  local U_1 = U[i+1]
+  local U_2 = U[j+1]:shift(i, "from_forward")
+  local U_3 = U[j+1]:shift(i, "from_forward"):shift(j, "from_forward")
+  local U_4 = U[j+1]:shift(i, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward")
+  local U_5 = (U[j+1]:shift(i, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"))
+  local U_6 = (U[i+1]:shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"))
+  local U_7 = (U[j+1]:shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"))
+  local U_8 = (U[j+1]:shift(j, "from_forward"):shift(j, "from_forward"))
+  local U_9 = (U[j+1]:shift(j, "from_forward"))
+  local U_10 = (U[j+1])
+  local Wij = (U_1*U_2*U_3*U_4*U_5*U_6:adjoin()*U_7:adjoin()*U_8:adjoin()*U_9:adjoin()*U_10:adjoin()):trace():real()
+  return Wij:sum() / (volume * qcd.Nc)
+end
+
+function wilson_1_x_5_loop(U, i, j)
+  local U_1 = U[i+1]
+  local U_2 = U[j+1]:shift(i, "from_forward")
+  local U_3 = U[j+1]:shift(i, "from_forward"):shift(j, "from_forward")
+  local U_4 = U[j+1]:shift(i, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward")
+  local U_5 = (U[j+1]:shift(i, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"))
+  local U_6 = (U[j+1]:shift(i, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"))
+  local U_7 = (U[i+1]:shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"))
+  local U_8 = (U[j+1]:shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"))
+  local U_9 = (U[j+1]:shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"))
+  local U_10 = (U[j+1]:shift(j, "from_forward"):shift(j, "from_forward"))
+  local U_11 = (U[j+1]:shift(j, "from_forward"))
+  local U_12 = (U[j+1])
+  local Wij = (U_1*U_2*U_3*U_4*U_5*U_6*U_7:adjoin()*U_8:adjoin()*U_9:adjoin()*U_10:adjoin()*U_11:adjoin()*U_12:adjoin()):trace():real()
+  return Wij:sum() / (volume * qcd.Nc)
+end
+
+function wilson_2_x_1_loop(U, i, j)
+  local U_1 = U[i+1]
+  local U_2 = U[i+1]:shift(i, "from_forward")
+  local U_3 = U[j+1]:shift(i, "from_forward"):shift(i, "from_forward")
+  local U_4 = U[i+1]:shift(i, "from_forward"):shift(j, "from_forward")
+  local U_5 = U[i+1]:shift(j, "from_forward")
+  local U_6 = U[j+1]
+  local Wij = (U_1 * U_2 * U_3 * U_4:adjoin()* U_5:adjoin()* U_6:adjoin()):trace():real()
+  return Wij:sum() / (volume * qcd.Nc)
+end
+
+function wilson_2_x_2_loop(U, i, j)
+  local U_1 = U[i+1]
+  local U_2 = U[i+1]:shift(i, "from_forward")
+  local U_3 = U[j+1]:shift(i, "from_forward"):shift(i, "from_forward")
+  local U_4 = U[j+1]:shift(i, "from_forward"):shift(i, "from_forward"):shift(j, "from_forward")
+  local U_5 = (U[i+1]:shift(i, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"))
+  local U_6 = (U[i+1]:shift(j, "from_forward"):shift(j, "from_forward"))
+  local U_7 = (U[j+1]:shift(j, "from_forward"))
+  local U_8 = (U[j+1])
+  local Wij = ((U_1 * U_2 * U_3 * U_4 * U_5:adjoin() * U_6:adjoin() * U_7:adjoin() * U_8:adjoin()):trace():real())
+  return Wij:sum() / (volume * qcd.Nc)
+end
+
+function wilson_2_x_3_loop(U, i, j)
+  local U_1 = U[i+1]
+  local U_2 = U[i+1]:shift(i, "from_forward")
+  local U_3 = U[j+1]:shift(i, "from_forward"):shift(i, "from_forward")
+  local U_4 = U[j+1]:shift(i, "from_forward"):shift(i, "from_forward"):shift(j, "from_forward")
+  local U_5 = (U[j+1]:shift(i, "from_forward"):shift(i, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"))
+  local U_6 = (U[i+1]:shift(i, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"))
+  local U_7 = (U[i+1]:shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"))
+  local U_8 = (U[j+1]:shift(j, "from_forward"):shift(j, "from_forward"))
+  local U_9 = (U[j+1]:shift(j, "from_forward"))
+  local U_10 = (U[j+1])
+  local Wij = ((U_1 * U_2 * U_3 * U_4 * U_5 * U_6:adjoin() * U_7:adjoin() * U_8:adjoin() * U_9:adjoin() * U_10:adjoin()):trace():real())
+  return Wij:sum() / (volume * qcd.Nc)
+end
+
+
+function wilson_2_x_4_loop(U, i, j)
+  local U_1 = U[i+1]
+  local U_2 = U[i+1]:shift(i, "from_forward")
+  local U_3 = U[j+1]:shift(i, "from_forward"):shift(i, "from_forward")
+  local U_4 = U[j+1]:shift(i, "from_forward"):shift(i, "from_forward"):shift(j, "from_forward")
+  local U_5 = (U[j+1]:shift(i, "from_forward"):shift(i, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"))
+  local U_6 = (U[j+1]:shift(i, "from_forward"):shift(i, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"))
+  local U_7 = (U[i+1]:shift(i, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"))
+  local U_8 = (U[i+1]:shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"))
+  local U_9 = (U[j+1]:shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"))
+  local U_10 = (U[j+1]:shift(j, "from_forward"):shift(j, "from_forward"))
+  local U_11 = (U[j+1]:shift(j, "from_forward"))
+  local U_12 = (U[j+1])
+  local Wij = ((U_1 * U_2 * U_3 * U_4 * U_5 * U_6 * U_7:adjoin() * U_8:adjoin() * U_9:adjoin() * U_10:adjoin() * U_11:adjoin() * U_12:adjoin()):trace():real())
+  return Wij:sum() / (volume * qcd.Nc)
+end
+
+
+
+function wilson_2_x_5_loop(U, i, j)
+  local U_1 = U[i+1]
+  local U_2 = U[i+1]:shift(i, "from_forward")
+  local U_3 = U[j+1]:shift(i, "from_forward"):shift(i, "from_forward")
+  local U_4 = U[j+1]:shift(i, "from_forward"):shift(i, "from_forward"):shift(j, "from_forward")
+  local U_5 = (U[j+1]:shift(i, "from_forward"):shift(i, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"))
+  local U_6 = (U[j+1]:shift(i, "from_forward"):shift(i, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"))
+  local U_7 = (U[j+1]:shift(i, "from_forward"):shift(i, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"))
+  local U_8 = (U[i+1]:shift(i, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"))
+  local U_9 = (U[i+1]:shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"))
+  local U_10 = (U[j+1]:shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"))
+  local U_11 = (U[j+1]:shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"))
+  local U_12 = (U[j+1]:shift(j, "from_forward"):shift(j, "from_forward"))
+  local U_13 = (U[j+1]:shift(j, "from_forward"))
+  local U_14 = (U[j+1])
+  local Wij = ((U_1 * U_2 * U_3 * U_4 * U_5 * U_6 * U_7 * U_8:adjoin() * U_9:adjoin() * U_10:adjoin() * U_11:adjoin() * U_12:adjoin() * U_13:adjoin() * U_14:adjoin()):trace():real())
+  return Wij:sum() / (volume * qcd.Nc)
+end
+
+function wilson_3_x_1_loop(U, i, j)
+  local U_1 = U[i+1]
+  local U_2 = U[i+1]:shift(i, "from_forward")
+  local U_3 = U[i+1]:shift(i, "from_forward"):shift(i, "from_forward")
+  local U_4 = U[j+1]:shift(i, "from_forward"):shift(i, "from_forward"):shift(i, "from_forward")
+  local U_5 = U[i+1]:shift(i, "from_forward"):shift(i, "from_forward"):shift(j, "from_forward")
+  local U_6 = U[i+1]:shift(i, "from_forward"):shift(j, "from_forward")
+  local U_7 = U[i+1]:shift(j, "from_forward")
+  local U_8 = U[j+1]
+  local Wij = (U_1 * U_2 * U_3 * U_4* U_5:adjoin()* U_6:adjoin()* U_7:adjoin()* U_8:adjoin()):trace():real()
+  return Wij:sum() / (volume * qcd.Nc)
+end
+
+function wilson_3_x_2_loop(U, i, j)
+  local U_1 = U[i+1]
+  local U_2 = U[i+1]:shift(i, "from_forward")
+  local U_3 = U[i+1]:shift(i, "from_forward"):shift(i, "from_forward")
+  local U_4 = U[j+1]:shift(i, "from_forward"):shift(i, "from_forward"):shift(i, "from_forward")
+  local U_5 = U[j+1]:shift(i, "from_forward"):shift(i, "from_forward"):shift(i, "from_forward"):shift(j, "from_forward")
+  local U_6 = U[i+1]:shift(i, "from_forward"):shift(i, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward")
+  local U_7 = U[i+1]:shift(i, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward")
+  local U_8 = U[i+1]:shift(j, "from_forward"):shift(j, "from_forward")
+  local U_9 = U[j+1]:shift(j, "from_forward")
+  local U_10 = U[j+1]
+  local Wij = (U_1 * U_2 * U_3 * U_4 * U_5 * U_6:adjoin() * U_7:adjoin() * U_8:adjoin() * U_9:adjoin() * U_10:adjoin()):trace():real()
+  return Wij:sum() / (volume * qcd.Nc)
+end
+
+
+function wilson_3_x_3_loop(U, i, j)
+  local U_1 = U[i+1]
+  local U_2 = U[i+1]:shift(i, "from_forward")
+  local U_3 = U[i+1]:shift(i, "from_forward"):shift(i, "from_forward")
+  local U_4 = U[j+1]:shift(i, "from_forward"):shift(i, "from_forward"):shift(i, "from_forward")
+  local U_5 = U[j+1]:shift(i, "from_forward"):shift(i, "from_forward"):shift(i, "from_forward"):shift(j, "from_forward")
+  local U_6 = U[j+1]:shift(i, "from_forward"):shift(i, "from_forward"):shift(i, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward")
+  local U_7 = (U[i+1]:shift(i, "from_forward"):shift(i, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"))
+  local U_8 = (U[i+1]:shift(i, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"))
+  local U_9 = (U[i+1]:shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"))
+  local U_10 = (U[j+1]:shift(j, "from_forward"):shift(j, "from_forward"))
+  local U_11 = (U[j+1]:shift(j, "from_forward"))
+  local U_12 = (U[j+1])
+  local Wij = (U_1 * U_2 * U_3 * U_4 * U_5 * U_6 * U_7:adjoin() * U_8:adjoin() * U_9:adjoin() * U_10:adjoin() * U_11:adjoin() * U_12:adjoin()):trace():real()
+  return Wij:sum() / (volume * qcd.Nc)
+end
+
+function wilson_3_x_4_loop(U, i, j)
+  local U_1 = U[i+1]
+  local U_2 = U[i+1]:shift(i, "from_forward")
+  local U_3 = U[i+1]:shift(i, "from_forward"):shift(i, "from_forward")
+  local U_4 = U[j+1]:shift(i, "from_forward"):shift(i, "from_forward"):shift(i, "from_forward")
+  local U_5 = U[j+1]:shift(i, "from_forward"):shift(i, "from_forward"):shift(i, "from_forward"):shift(j, "from_forward")
+  local U_6 = U[j+1]:shift(i, "from_forward"):shift(i, "from_forward"):shift(i, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward")
+  local U_7 = U[j+1]:shift(i, "from_forward"):shift(i, "from_forward"):shift(i, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward")
+  local U_8 = (U[i+1]:shift(i, "from_forward"):shift(i, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"))
+  local U_9 = (U[i+1]:shift(i, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"))
+  local U_10 = (U[i+1]:shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"))
+  local U_11 = (U[j+1]:shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"))
+  local U_12 = (U[j+1]:shift(j, "from_forward"):shift(j, "from_forward"))
+  local U_13 = (U[j+1]:shift(j, "from_forward"))
+  local U_14 = (U[j+1])
+  local Wij = (U_1 * U_2 * U_3 * U_4 * U_5 * U_6 * U_7 * U_8:adjoin() * U_9:adjoin() * U_10:adjoin() * U_11:adjoin() * U_12:adjoin() * U_13:adjoin() * U_14:adjoin()):trace():real()                         
+  return Wij:sum() / (volume * qcd.Nc)
+end
+
+function wilson_3_x_5_loop(U, i, j)
+  local U_1 = U[i+1]
+  local U_2 = U[i+1]:shift(i, "from_forward")
+  local U_3 = U[i+1]:shift(i, "from_forward"):shift(i, "from_forward")
+  local U_4 = U[j+1]:shift(i, "from_forward"):shift(i, "from_forward"):shift(i, "from_forward")
+  local U_5 = U[j+1]:shift(i, "from_forward"):shift(i, "from_forward"):shift(i, "from_forward"):shift(j, "from_forward")
+  local U_6 = U[j+1]:shift(i, "from_forward"):shift(i, "from_forward"):shift(i, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward")
+  local U_7 = U[j+1]:shift(i, "from_forward"):shift(i, "from_forward"):shift(i, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward")
+  local U_8 = U[j+1]:shift(i, "from_forward"):shift(i, "from_forward"):shift(i, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward")
+  local U_9 = (U[i+1]:shift(i, "from_forward"):shift(i, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"))
+  local U_10 = (U[i+1]:shift(i, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"))
+  local U_11 = (U[i+1]:shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"))
+  local U_12 = (U[j+1]:shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"))
+  local U_13 = (U[j+1]:shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"))
+  local U_14 = (U[j+1]:shift(j, "from_forward"):shift(j, "from_forward"))
+  local U_15 = (U[j+1]:shift(j, "from_forward"))
+  local U_16 = (U[j+1])
+  local Wij = (U_1 * U_2 * U_3 * U_4 * U_5 * U_6 * U_7 * U_8 * U_9:adjoin() * U_10:adjoin() * U_11:adjoin() * U_12:adjoin() * U_13:adjoin() * U_14:adjoin() * U_15:adjoin() * U_16:adjoin()):trace():real()
+  return Wij:sum() / (volume * qcd.Nc)
+end
+
+
+
+function wilson_4_x_1_loop(U, i, j)
+  local U_1 = U[i+1]
+  local U_2 = U[i+1]:shift(i, "from_forward")
+  local U_3 = U[i+1]:shift(i, "from_forward"):shift(i, "from_forward")
+  local U_4 = U[i+1]:shift(i, "from_forward"):shift(i, "from_forward"):shift(i, "from_forward")
+  local U_5 = U[j+1]:shift(i, "from_forward"):shift(i, "from_forward"):shift(i, "from_forward"):shift(i, "from_forward")
+  local U_6 = U[i+1]:shift(i, "from_forward"):shift(i, "from_forward"):shift(i, "from_forward"):shift(j, "from_forward")
+  local U_7 = U[i+1]:shift(i, "from_forward"):shift(i, "from_forward"):shift(j, "from_forward")
+  local U_8 = U[i+1]:shift(i, "from_forward"):shift(j, "from_forward")
+  local U_9 = U[i+1]:shift(j, "from_forward")
+  local U_10 = U[j+1]
+  local Wij = (U_1 * U_2 * U_3 * U_4 * U_5 * U_6:adjoin() * U_7:adjoin() * U_8:adjoin() * U_9:adjoin() * U_10:adjoin()):trace():real()
+  return Wij:sum() / (volume * qcd.Nc)
+end
+
+
+
+function wilson_4_x_2_loop(U, i, j)
+  local U_1 = U[i+1]
+  local U_2 = U[i+1]:shift(i, "from_forward")
+  local U_3 = U[i+1]:shift(i, "from_forward"):shift(i, "from_forward")
+  local U_4 = U[i+1]:shift(i, "from_forward"):shift(i, "from_forward"):shift(i, "from_forward")
+  local U_5 = U[j+1]:shift(i, "from_forward"):shift(i, "from_forward"):shift(i, "from_forward"):shift(i, "from_forward")
+  local U_6 = U[j+1]:shift(i, "from_forward"):shift(i, "from_forward"):shift(i, "from_forward"):shift(i, "from_forward"):shift(j, "from_forward")
+  local U_7 = U[i+1]:shift(i, "from_forward"):shift(i, "from_forward"):shift(i, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward")
+  local U_8 = U[i+1]:shift(i, "from_forward"):shift(i, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward")
+  local U_9 = U[i+1]:shift(i, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward")
+  local U_10 = U[i+1]:shift(j, "from_forward"):shift(j, "from_forward")
+  local U_11 = U[j+1]:shift(j, "from_forward")
+  local U_12 = U[j+1]
+  local Wij = (U_1 * U_2 * U_3 * U_4 * U_5 * U_6 * U_7:adjoin() * U_8:adjoin() * U_9:adjoin() * U_10:adjoin() * U_11:adjoin() * U_12:adjoin()):trace():real()
+  return Wij:sum() / (volume * qcd.Nc)
+end
+
+function wilson_4_x_3_loop(U, i, j)
+  local U_1 = U[i+1]
+  local U_2 = U[i+1]:shift(i, "from_forward")
+  local U_3 = U[i+1]:shift(i, "from_forward"):shift(i, "from_forward")
+  local U_4 = U[i+1]:shift(i, "from_forward"):shift(i, "from_forward"):shift(i, "from_forward")
+  local U_5 = U[j+1]:shift(i, "from_forward"):shift(i, "from_forward"):shift(i, "from_forward"):shift(i, "from_forward")
+  local U_6 = U[j+1]:shift(i, "from_forward"):shift(i, "from_forward"):shift(i, "from_forward"):shift(i, "from_forward"):shift(j, "from_forward")
+  local U_7 = U[j+1]:shift(i, "from_forward"):shift(i, "from_forward"):shift(i, "from_forward"):shift(i, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward")
+  local U_8 = U[i+1]:shift(i, "from_forward"):shift(i, "from_forward"):shift(i, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward")
+  local U_9 = U[i+1]:shift(i, "from_forward"):shift(i, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward")
+  local U_10 = U[i+1]:shift(i, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward")
+  local U_11 = U[i+1]:shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward")
+  local U_12 = U[j+1]:shift(j, "from_forward"):shift(j, "from_forward")
+  local U_13 = U[j+1]:shift(j, "from_forward")
+  local U_14 = U[j+1]
+  local Wij = (U_1 * U_2 * U_3 * U_4 * U_5 * U_6 * U_7 * U_8:adjoin() * U_9:adjoin() * U_10:adjoin() * U_11:adjoin() * U_12:adjoin() * U_13:adjoin() * U_14:adjoin()):trace():real()
+  return Wij:sum() / (volume * qcd.Nc)
+end
+
+function wilson_4_x_4_loop(U, i, j)
+  local U_1 = U[i+1]
+  local U_2 = U[i+1]:shift(i, "from_forward")
+  local U_3 = U[i+1]:shift(i, "from_forward"):shift(i, "from_forward")
+  local U_4 = U[i+1]:shift(i, "from_forward"):shift(i, "from_forward"):shift(i, "from_forward")
+  local U_5 = U[j+1]:shift(i, "from_forward"):shift(i, "from_forward"):shift(i, "from_forward"):shift(i, "from_forward")
+  local U_6 = U[j+1]:shift(i, "from_forward"):shift(i, "from_forward"):shift(i, "from_forward"):shift(i, "from_forward"):shift(j, "from_forward")
+  local U_7 = U[j+1]:shift(i, "from_forward"):shift(i, "from_forward"):shift(i, "from_forward"):shift(i, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward")
+  local U_8 = U[j+1]:shift(i, "from_forward"):shift(i, "from_forward"):shift(i, "from_forward"):shift(i, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward")
+  local U_9 = U[i+1]:shift(i, "from_forward"):shift(i, "from_forward"):shift(i, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward")
+  local U_10 = U[i+1]:shift(i, "from_forward"):shift(i, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward")
+  local U_11 = U[i+1]:shift(i, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward")
+  local U_12 = U[i+1]:shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward")  
+  local U_13 = U[j+1]:shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward")
+  local U_14 = U[j+1]:shift(j, "from_forward"):shift(j, "from_forward")
+  local U_15 = U[j+1]:shift(j, "from_forward")
+  local U_16 = U[j+1]
+  local Wij = (U_1 * U_2 * U_3 * U_4 * U_5 * U_6 * U_7 * U_8 * U_9:adjoin() * U_10:adjoin() * U_11:adjoin() * U_12:adjoin() * U_13:adjoin() * U_14:adjoin() * U_15:adjoin() * U_16:adjoin()):trace():real()
+  return Wij:sum() / (volume * qcd.Nc)
+end
+
+
+function wilson_4_x_5_loop(U, i, j)
+  local U_1 = U[i+1]
+  local U_2 = U[i+1]:shift(i, "from_forward")
+  local U_3 = U[i+1]:shift(i, "from_forward"):shift(i, "from_forward")
+  local U_4 = U[i+1]:shift(i, "from_forward"):shift(i, "from_forward"):shift(i, "from_forward")
+  local U_5 = U[j+1]:shift(i, "from_forward"):shift(i, "from_forward"):shift(i, "from_forward"):shift(i, "from_forward")
+  local U_6 = U[j+1]:shift(i, "from_forward"):shift(i, "from_forward"):shift(i, "from_forward"):shift(i, "from_forward"):shift(j, "from_forward")
+  local U_7 = U[j+1]:shift(i, "from_forward"):shift(i, "from_forward"):shift(i, "from_forward"):shift(i, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward")
+  local U_8 = U[j+1]:shift(i, "from_forward"):shift(i, "from_forward"):shift(i, "from_forward"):shift(i, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward")
+  local U_9 = U[j+1]:shift(i, "from_forward"):shift(i, "from_forward"):shift(i, "from_forward"):shift(i, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward")
+  local U_10 = U[i+1]:shift(i, "from_forward"):shift(i, "from_forward"):shift(i, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward")
+  local U_11 = U[i+1]:shift(i, "from_forward"):shift(i, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward")
+  local U_12 = U[i+1]:shift(i, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward")
+  local U_13 = U[i+1]:shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward")
+  local U_14 = U[j+1]:shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward")
+  local U_15 = U[j+1]:shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward")
+  local U_16 = U[j+1]:shift(j, "from_forward"):shift(j, "from_forward")
+  local U_17 = U[j+1]:shift(j, "from_forward")
+  local U_18 = U[j+1]
+  local Wij = (U_1 * U_2 * U_3 * U_4 * U_5 * U_6 * U_7 * U_8 * U_9 * U_10:adjoin() * U_11:adjoin() * U_12:adjoin() * U_13:adjoin() * U_14:adjoin() * U_15:adjoin() * U_16:adjoin() * U_17:adjoin() * U_18:adjoin()):trace():real()
+  return Wij:sum() / (volume * qcd.Nc)
+end
+
+function wilson_5_x_1_loop(U, i, j)
+  return wilson_1_x_5_loop(U, j, i)
+end
+
+function wilson_5_x_2_loop(U, i, j)
+  return wilson_2_x_5_loop(U, j, i)
+end
+
+function wilson_5_x_3_loop(U, i, j)
+  return wilson_3_x_5_loop(U, j, i)
+end
+
+function wilson_5_x_4_loop(U, i, j)
+  return wilson_4_x_5_loop(U, j, i)
+end
+
+function wilson_5_x_5_loop(U, i, j)
+  local U_1 = U[i+1]
+  local U_2 = U[i+1]:shift(i, "from_forward")
+  local U_3 = U[i+1]:shift(i, "from_forward"):shift(i, "from_forward")
+  local U_4 = U[i+1]:shift(i, "from_forward"):shift(i, "from_forward"):shift(i, "from_forward")
+  local U_5 = U[i+1]:shift(i, "from_forward"):shift(i, "from_forward"):shift(i, "from_forward"):shift(i, "from_forward")
+  local U_6 = U[j+1]:shift(i, "from_forward"):shift(i, "from_forward"):shift(i, "from_forward"):shift(i, "from_forward"):shift(i, "from_forward")
+  local U_7 = U[j+1]:shift(i, "from_forward"):shift(i, "from_forward"):shift(i, "from_forward"):shift(i, "from_forward"):shift(i, "from_forward"):shift(j, "from_forward")
+  local U_8 = U[j+1]:shift(i, "from_forward"):shift(i, "from_forward"):shift(i, "from_forward"):shift(i, "from_forward"):shift(i, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward")
+  local U_9 = U[j+1]:shift(i, "from_forward"):shift(i, "from_forward"):shift(i, "from_forward"):shift(i, "from_forward"):shift(i, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward")
+  local U_10 = U[j+1]:shift(i, "from_forward"):shift(i, "from_forward"):shift(i, "from_forward"):shift(i, "from_forward"):shift(i, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward")
+  local U_11 = U[i+1]:shift(i, "from_forward"):shift(i, "from_forward"):shift(i, "from_forward"):shift(i, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward")
+  local U_12 = U[i+1]:shift(i, "from_forward"):shift(i, "from_forward"):shift(i, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward")
+  local U_13 = U[i+1]:shift(i, "from_forward"):shift(i, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward")
+  local U_14 = U[i+1]:shift(i, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward")
+  local U_15 = U[i+1]:shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward")
+  local U_16 = U[j+1]:shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward")
+  local U_17 = U[j+1]:shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward")
+  local U_18 = U[j+1]:shift(j, "from_forward"):shift(j, "from_forward")
+  local U_19 = U[j+1]:shift(j, "from_forward")
+  local U_20 = U[j+1]
+  local Wij = (U_1 * U_2 * U_3 * U_4 * U_5 * U_6 * U_7 * U_8 * U_9 * U_10 * U_11:adjoin() * U_12:adjoin() * U_13:adjoin() * U_14:adjoin() * U_15:adjoin() * U_16:adjoin() * U_17:adjoin() * U_18:adjoin() * U_19:adjoin() * U_20:adjoin()):trace():real()
+  return Wij:sum() / (volume * qcd.Nc)
+end
+
+function wilson_2_x_3_timeslice_loop(U, i, j)
+  local U_1 = U[i+1]
+  local U_2 = U[i+1]:shift(i, "from_forward")
+  local U_3 = U[j+1]:shift(i, "from_forward"):shift(i, "from_forward")
+  local U_4 = U[j+1]:shift(i, "from_forward"):shift(i, "from_forward"):shift(j, "from_forward")
+  local U_5 = (U[j+1]:shift(i, "from_forward"):shift(i, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"))
+  local U_6 = (U[i+1]:shift(i, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"))
+  local U_7 = (U[i+1]:shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"))
+  local U_8 = (U[j+1]:shift(j, "from_forward"):shift(j, "from_forward"))
+  local U_9 = (U[j+1]:shift(j, "from_forward"))
+  local U_10 = (U[j+1])
+  local Wij = ((U_1 * U_2 * U_3 * U_4 * U_5 * U_6:adjoin() * U_7:adjoin() * U_8:adjoin() * U_9:adjoin() * U_10:adjoin()):trace():real())/(three_volume * qcd.Nc)
+  local Wij_t_array = Wij:sum(L:MultiSet(L[3], L:pcoord(3)))            -- for each time slice
+  return Wij_t_array
+end
+
+function wilson_3_x_2_timeslice_loop(U, i, j)
+  local U_1 = U[i+1]
+  local U_2 = U[i+1]:shift(i, "from_forward")
+  local U_3 = U[i+1]:shift(i, "from_forward"):shift(i, "from_forward")
+  local U_4 = U[j+1]:shift(i, "from_forward"):shift(i, "from_forward"):shift(i, "from_forward")
+  local U_5 = U[j+1]:shift(i, "from_forward"):shift(i, "from_forward"):shift(i, "from_forward"):shift(j, "from_forward")
+  local U_6 = U[i+1]:shift(i, "from_forward"):shift(i, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward")
+  local U_7 = U[i+1]:shift(i, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward")
+  local U_8 = U[i+1]:shift(j, "from_forward"):shift(j, "from_forward")
+  local U_9 = U[j+1]:shift(j, "from_forward")
+  local U_10 = U[j+1]
+  local Wij = ((U_1 * U_2 * U_3 * U_4 * U_5 * U_6:adjoin() * U_7:adjoin() * U_8:adjoin() * U_9:adjoin() * U_10:adjoin()):trace():real())/(three_volume * qcd.Nc)
+  local Wij_t_array = Wij:sum(L:MultiSet(L[3], L:pcoord(3)))            -- for each time slice
+  return Wij_t_array
+end
+
+function yz_23_32_wilson(U, cfg)
+  local h5_writer = qcd.hdf5.Writer("/global/homes/h/hari_8/QLUA_tutorials/wilson_loops_from_configs/wilson_loops_23_32_timeslice__" .. tostring(cfg) .. "_yz_plane.h5")
+  local write_options = { transfer = "collective", precision = "double" }
+  local path_to_yz_23_wilson = "/Wilson_loops/wilson_2x3"
+  local path_to_yz_32_wilson = "/Wilson_loops/wilson_3x2"
+  local W_23 = wilson_2_x_3_timeslice_loop(U, 1, 2)
+  local W_32 = wilson_3_x_2_timeslice_loop(U, 1, 2)
+  h5_writer:write(path_to_yz_23_wilson, W_23, write_options)
+  h5_writer:write(path_to_yz_32_wilson, W_32, write_options)
+  h5_writer:close()
+end
+
+function run_test(U, cfg)
+  local h5_writer = qcd.hdf5.Writer("/global/homes/h/hari_8/QLUA_tutorials/wilson_loops_from_configs/wilson_loops_b_cfg_" .. tostring(cfg) .. "_r12345_creutz_ratio.h5")
+  for i= 0, 2, 1 do
+    local W_11 = wilson_1_x_1_loop(U, i, 3)
+    local W_12 = wilson_1_x_2_loop(U, i, 3)
+    local W_13 = wilson_1_x_3_loop(U, i, 3)
+    local W_14 = wilson_1_x_4_loop(U, i, 3)
+    local W_15 = wilson_1_x_5_loop(U, i, 3)
+    local W_21 = wilson_2_x_1_loop(U, i, 3)
+    local W_22 = wilson_2_x_2_loop(U, i, 3)
+    local W_23 = wilson_2_x_3_loop(U, i, 3)
+    local W_24 = wilson_2_x_4_loop(U, i, 3)
+    local W_25 = wilson_2_x_5_loop(U, i, 3)
+    local W_31 = wilson_3_x_1_loop(U, i, 3)
+    local W_32 = wilson_3_x_2_loop(U, i, 3)
+    local W_33 = wilson_3_x_3_loop(U, i, 3)
+    local W_34 = wilson_3_x_4_loop(U, i, 3)
+    local W_35 = wilson_3_x_5_loop(U, i, 3)
+    local W_41 = wilson_4_x_1_loop(U, i, 3)
+    local W_42 = wilson_4_x_2_loop(U, i, 3)
+    local W_43 = wilson_4_x_3_loop(U, i, 3)
+    local W_44 = wilson_4_x_4_loop(U, i, 3)
+    local W_45 = wilson_4_x_5_loop(U, i, 3)
+    local W_51 = wilson_5_x_1_loop(U, i, 3)
+    local W_52 = wilson_5_x_2_loop(U, i, 3)
+    local W_53 = wilson_5_x_3_loop(U, i, 3)
+    local W_54 = wilson_5_x_4_loop(U, i, 3)
+    local W_55 = wilson_5_x_5_loop(U, i, 3)
+    local write_options = { transfer = "collective", precision = "double" }
+    local path_to_wilson_11 = string.format("/Wilson_loops_creutz_ratio/wilson_1x1/i_%d_j_3", i)
+    local path_to_wilson_12 = string.format("/Wilson_loops_creutz_ratio/wilson_1x2/i_%d_j_3", i)
+    local path_to_wilson_13 = string.format("/Wilson_loops_creutz_ratio/wilson_1x3/i_%d_j_3", i)
+    local path_to_wilson_14 = string.format("/Wilson_loops_creutz_ratio/wilson_1x4/i_%d_j_3", i)
+    local path_to_wilson_15 = string.format("/Wilson_loops_creutz_ratio/wilson_1x5/i_%d_j_3", i)
+    local path_to_wilson_21 = string.format("/Wilson_loops_creutz_ratio/wilson_2x1/i_%d_j_3", i)
+    local path_to_wilson_22 = string.format("/Wilson_loops_creutz_ratio/wilson_2x2/i_%d_j_3", i)
+    local path_to_wilson_23 = string.format("/Wilson_loops_creutz_ratio/wilson_2x3/i_%d_j_3", i)
+    local path_to_wilson_24 = string.format("/Wilson_loops_creutz_ratio/wilson_2x4/i_%d_j_3", i)
+    local path_to_wilson_25 = string.format("/Wilson_loops_creutz_ratio/wilson_2x5/i_%d_j_3", i)
+    local path_to_wilson_31 = string.format("/Wilson_loops_creutz_ratio/wilson_3x1/i_%d_j_3", i)
+    local path_to_wilson_32 = string.format("/Wilson_loops_creutz_ratio/wilson_3x2/i_%d_j_3", i)
+    local path_to_wilson_33 = string.format("/Wilson_loops_creutz_ratio/wilson_3x3/i_%d_j_3", i)
+    local path_to_wilson_34 = string.format("/Wilson_loops_creutz_ratio/wilson_3x4/i_%d_j_3", i)
+    local path_to_wilson_35 = string.format("/Wilson_loops_creutz_ratio/wilson_3x5/i_%d_j_3", i)
+    local path_to_wilson_41 = string.format("/Wilson_loops_creutz_ratio/wilson_4x1/i_%d_j_3", i)
+    local path_to_wilson_42 = string.format("/Wilson_loops_creutz_ratio/wilson_4x2/i_%d_j_3", i)
+    local path_to_wilson_43 = string.format("/Wilson_loops_creutz_ratio/wilson_4x3/i_%d_j_3", i)
+    local path_to_wilson_44 = string.format("/Wilson_loops_creutz_ratio/wilson_4x4/i_%d_j_3", i)
+    local path_to_wilson_45 = string.format("/Wilson_loops_creutz_ratio/wilson_4x5/i_%d_j_3", i)
+    local path_to_wilson_51 = string.format("/Wilson_loops_creutz_ratio/wilson_5x1/i_%d_j_3", i)
+    local path_to_wilson_52 = string.format("/Wilson_loops_creutz_ratio/wilson_5x2/i_%d_j_3", i)
+    local path_to_wilson_53 = string.format("/Wilson_loops_creutz_ratio/wilson_5x3/i_%d_j_3", i)
+    local path_to_wilson_54 = string.format("/Wilson_loops_creutz_ratio/wilson_5x4/i_%d_j_3", i)
+    local path_to_wilson_55 = string.format("/Wilson_loops_creutz_ratio/wilson_5x5/i_%d_j_3", i)
+    h5_writer:write(path_to_wilson_11, W_11, write_options)
+    h5_writer:write(path_to_wilson_12, W_12, write_options) 
+    h5_writer:write(path_to_wilson_13, W_13, write_options)                                                           
+    h5_writer:write(path_to_wilson_14, W_14, write_options)                                                           
+    h5_writer:write(path_to_wilson_15, W_15, write_options)                                                           
+    h5_writer:write(path_to_wilson_21, W_21, write_options)                                                           
+    h5_writer:write(path_to_wilson_22, W_22, write_options)                                                           
+    h5_writer:write(path_to_wilson_23, W_23, write_options)                                                           
+    h5_writer:write(path_to_wilson_24, W_24, write_options)                                                           
+    h5_writer:write(path_to_wilson_25, W_25, write_options)
+    h5_writer:write(path_to_wilson_31, W_31, write_options)
+    h5_writer:write(path_to_wilson_32, W_32, write_options)
+    h5_writer:write(path_to_wilson_33, W_33, write_options)
+    h5_writer:write(path_to_wilson_34, W_34, write_options)
+    h5_writer:write(path_to_wilson_35, W_35, write_options)
+    h5_writer:write(path_to_wilson_41, W_41, write_options)
+    h5_writer:write(path_to_wilson_42, W_42, write_options)
+    h5_writer:write(path_to_wilson_43, W_43, write_options)
+    h5_writer:write(path_to_wilson_44, W_44, write_options)
+    h5_writer:write(path_to_wilson_45, W_45, write_options)
+    h5_writer:write(path_to_wilson_51, W_51, write_options)
+    h5_writer:write(path_to_wilson_52, W_52, write_options)
+    h5_writer:write(path_to_wilson_53, W_53, write_options)
+    h5_writer:write(path_to_wilson_54, W_54, write_options)
+    h5_writer:write(path_to_wilson_55, W_55, write_options)                                                           
+  end
+  h5_writer:close()
+  print("success : %s\n", tostring(cfg))
+end
+
+
+function test_wilson_fun(U)
+  local i = 2
+  local j = 1
+  printf("\n On the plane %d %d\n", i, j)
+  for x = 1, 20 do
+    for y = 1, 20 do
+    -- local functionName = "wilson_" .. tostring(x) .. "_x_" .. tostring(y) .. "_loop"
+    -- local result = _G[functionName](U, i, j) 
+    printf("W(%d, %d):= New function = %.20f \n", x, y, wilson_loop(x, y, i, j))
+    end
+  end
+end
+
+
+function save_wilson_loops(U, cfg)
+  local h5_writer = qcd.hdf5.Writer("/global/homes/h/hari_8/QLUA_tutorials/wilson_loops_from_configs/wilson_loops_function_cfg_" .. tostring(cfg) .. "_upto_20x20_creutz_ratio.h5")
+  local j = 3
+  for i= 0, 2, 1 do
+    local write_options = { transfer = "collective", precision = "double" }
+    for x = 1, 20 do
+      for y = 1, 20 do
+        local path_to_wilson = string.format("/Wilson_loops/wilson_%d_x_%d/i_%d_j_%d", x, y, i, j)
+        h5_writer:write(path_to_wilson, wilson_loop(U, x, y, i, j), write_options)
+      end
+    end
+  end
+  h5_writer:close()
+  print("success : %s\n", tostring(cfg))
+end
+
+-- cfg = 1776
+-- stream = ""
+-- cfgstream = ""
+-- cfg_filename= "/pscratch/sd/e/engel/cfgs/cl21_32_96_b6p1_m0p2850_m0p2450_" .. cfgstream .. "cfg_" .. tostring(cfg) .. ".lime"
+-- W, finfo, rinfo = load_qdpc_gauge(L, cfg_filename)
+-- U = gauge_hyp_smear_std(W, 1)
+-- test_wilson_fun(U)
+
+
+
+for cfg_no = 1776, 2080, 4 do
+  local cfg = cfg_no
+  local stream = ""
+  local cfgstream = ""
+  local cfg_filename= "/pscratch/sd/e/engel/cfgs/cl21_32_96_b6p1_m0p2850_m0p2450_" .. cfgstream .. "cfg_" .. tostring(cfg) .. ".lime"
+  local W, finfo, rinfo = load_qdpc_gauge(L, cfg_filename)
+  local U = gauge_hyp_smear_std(W, 1)
+  print("starting : %s\n", tostring(cfg))
+  save_wilson_loops(U, cfg)
+end

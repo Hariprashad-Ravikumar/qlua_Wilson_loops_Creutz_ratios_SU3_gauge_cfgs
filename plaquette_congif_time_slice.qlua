@@ -1,0 +1,93 @@
+require("stdlib")
+
+
+qcd.Nc = 3
+
+cfg_filename= "/pscratch/sd/h/hari_8/cl21_32_96_b6p1_m0p2850_m0p2450_cfg_1776.lime"
+latsize = {32,32,32,96}
+
+function open_qdpc_read(L, name)
+  local qdp_r = qcd.qdpc.Reader(L, name)
+  return qdp_r
+end
+
+function load_qdpc_gauge(L, name)
+  local qdp_r, finfo = open_qdpc_read(L, name)
+  local gauge, rinfo = qdp_r:ColorMatrix(4)
+  qdp_r:close()
+  return gauge, finfo, rinfo
+end
+
+L = qcd.lattice(latsize)
+U, finfo, rinfo = load_qdpc_gauge(L, cfg_filename)
+
+
+volume = 1
+for i = 0, #L - 1 do
+  volume = volume * L[i]
+end
+
+three_volume = 1
+for i = 0, #L - 2 do
+  three_volume = three_volume * L[i]
+end
+
+
+-- Computing plaquettes in usual way (NOT in each time slice) for test
+
+function plaquette(U, i, j)
+  local Ui = U[j+1]:shift(i, "from_forward")
+  local Uj = U[i+1]:shift(j, "from_forward")
+  local Pij = (U[i+1] * Ui * Uj:adjoin() * U[j+1]:adjoin()):trace():real()
+  return Pij:sum() / (volume * qcd.Nc)
+end
+
+
+-- Computing plaquettes in each time slice
+
+function plaquette_time_slice(U, i, j) 
+  local Ui = U[j+1]:shift(i, "from_forward") 
+  local Uj = U[i+1]:shift(j, "from_forward") 
+  local Pij = (U[i+1] * Ui * Uj:adjoin() * U[j+1]:adjoin()):trace():real()/(three_volume * qcd.Nc)
+  local Pij_t_array = Pij:sum(L:MultiSet(L[3], L:pcoord(3)))            -- for each time slice
+  local Pij_sum = 0
+  for time = 0, #Pij_t_array - 1 do                                        -- print plaquettes in each time slice
+    local p  = Pij_t_array[time]
+    local p_t = p
+    printf("Plaquettes in plane (%d, %d) at time t = %d, is %15.8e\n", i, j, time, p_t)
+    Pij_sum = Pij_sum + p_t
+  end
+  return Pij_sum
+end 
+
+
+
+function run_test(U)
+  printf("\nPrinting plaquettes in usual way (NOT in each time slice) for test\n\n")
+  local s = 0
+  local k = 0
+  for i in interval(0, #L-1) do
+    for j in interval(i+1,#L-1) do
+      local sij = plaquette(U, i, j)
+      printf("  plaq[%d, %d] = %20.10f\n", i, j, sij)
+      s = s + sij
+      k = k + 1
+    end
+  end
+  printf("average plaquette %20.10f -------------------------------------- [a]\n\n", s / k);
+  printf("Printing plaquettes in each time slice\n\n")
+  local ss = 0
+  local kk = 0
+  for i in interval(0, #L-1) do
+    for j in interval(i+1,#L-1) do
+      local ssij = plaquette_time_slice(U, i, j)
+      printf("  plaq[%d, %d] = %20.10f\n", i, j, ssij)
+      ss = ss + ssij
+      kk = kk + 1
+    end
+  end
+  printf("average plaquette %20.10f -------------------------------------- [b]\n\n", ss / (L[3]*kk));
+  printf("Check: both average plaquette [a] and [b] values has to match \n\n")
+end
+
+run_test(U)

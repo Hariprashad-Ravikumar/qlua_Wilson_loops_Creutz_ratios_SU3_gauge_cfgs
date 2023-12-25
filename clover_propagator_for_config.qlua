@@ -1,0 +1,81 @@
+require "stdlib"
+require "qcd"
+require "gauge"
+
+cfg_filename= "/pscratch/sd/h/hari_8/cl21_32_96_b6p1_m0p2850_m0p2450_cfg_1776.lime"
+latsize = {32,32,32,96}
+
+function open_qdpc_read(L, name)
+  local qdp_r = qcd.qdpc.Reader(L, name)
+  return qdp_r
+end
+
+function load_qdpc_gauge(L, name)
+  local qdp_r, finfo = open_qdpc_read(L, name)
+  local gauge, rinfo = qdp_r:ColorMatrix(4)
+  qdp_r:close()
+  return gauge, finfo, rinfo
+end
+
+L = qcd.lattice(latsize)
+U, finfo, rinfo = load_qdpc_gauge(L, cfg_filename)
+
+
+volume = 1
+for i = 0, #L - 1 do
+  volume = volume * L[i]
+end
+
+qcd.Nc = 3
+
+CL = qcd.Clover(U, 0.139727, 1.0, {1,1,1, -1})
+solve = CL:mixed_solver(1e-10, 1000, 1e-25, 2000)
+
+src = L:DiracPropagator()
+Nc = src:colors()
+for ic = 0, Nc - 1 do
+  for is = 0, qcd.Ns - 1 do
+    local dv = L:DiracFermion()
+    dv[{0,0,0,0,c=ic,d=is}] = complex(1,0)
+    src[{c=ic,d=is}] = dv
+  end
+end
+
+
+q_prop = solve(src)
+a_prop = gamma{mu=5} * q_prop * gamma{mu=5}
+
+
+qq = {}
+for i = 0, qcd.Ns * qcd.Ns - 1 do
+  qq[i+1] = qcd.dot(a_prop, gamma{n=i} * q_prop * gamma{n=i})
+end
+
+aw = qcd.aff.Writer("meson2ptc0p.aff") 
+
+function meson2pt(qq_c, id, p3)
+  local px = 2 * math.pi * p3[1] / L[0]
+  local py = 2 * math.pi * p3[2] / L[1]
+  local pz = 2 * math.pi * p3[3] / L[2]
+  local w = (L:Real(L:pcoord(0)) * px +
+             L:Real(L:pcoord(1)) * py +
+             L:Real(L:pcoord(2)) * pz):expi()  -- plane wave with p=(px,py,pz)
+  local pt2 = (qq_c * w):sum(L:MultiSet(L[3], L:pcoord(3)))  -- 2pt function
+  for i = 0, #pt2 - 1 do                       -- print 2pt values
+    local q = pt2[i]
+    printf("meson %d px %d py %d pz %d t %d %15.8e %15.8e\n",
+            id, p3[1], p3[2], p3[3], i, q:real(), q:imag())
+  end
+  printf("\n")
+  aw:write(string.format("/twopoint/meson%d/px%dpy%dpz%d", id, p3[1], p3[2], p3[3]),
+           pt2)  
+end
+
+
+moments = {{0,0,0}}
+
+for i = 0, qcd.Ns * qcd.Ns - 1 do
+  for m = 1, #moments do
+    meson2pt(qq[i+1], i, moments[m])    
+  end
+end
