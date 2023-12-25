@@ -1,0 +1,9 @@
+ require("stdlib")
+ function true_random()
+   if not os.random then
+     printf("no /dev/urandom support")
+     os.exit(1)
+   end
+   return os.random()
+ end
+ true_random()

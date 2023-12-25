@@ -1,0 +1,1 @@
+foo = aff_reader:read("/global/homes/h/hari_8/meson2pt.aff")

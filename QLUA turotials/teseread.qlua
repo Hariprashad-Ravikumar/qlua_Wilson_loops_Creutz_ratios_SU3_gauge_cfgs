@@ -1,0 +1,19 @@
+require "stdlib"
+require "gauge"
+require "QCD.qdpc.Reader"
+
+function calculate_plaquette(config_file)
+  local Lattice = QCD.gauge.Lattice:new()
+  local reader = QCD.qdpc.Reader(Lattice, config_file, {})
+  local U = reader:next_gauge_field()
+
+  -- Perform plaquette calculation
+  local plaq = QCD.gauge.plaquette(U)
+
+  return plaq
+end
+
+local config_file = "/pscratch/sd/h/hari_8/cl21_32_96_b6p1_m0p2850_m0p2450_cfg_1776.lime"
+local plaquette = calculate_plaquette(config_file)
+print("Plaquette value:", plaquette)
+

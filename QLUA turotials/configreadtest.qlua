@@ -1,0 +1,59 @@
+require("stdlib")
+require("qcd")
+
+function InitLattice(X,Y,Z,T)
+  local lat= qcd.lattice{X,Y,Z,T}
+  local vol =1
+  local i
+  for i  = 0, #lat-1 do 
+     vol = vol*lat[i]
+  end
+  local r = {}
+  local rand
+  do
+     r.x = os.random()
+     local x = lat:Int(r.x)
+     for i=0, #lat-1 do
+        r[i+1] = os.random()
+        x = x * lat[i] + lat:pcoord(i) * r[i+1]
+     end
+     r.f = os.random()
+     printf("Initializing random state\n")
+     rand = lat:RandomState(r.f, x)
+   end
+   return lat, vol, rand
+end
+
+function LoadGaugeField(fname, lat, volume)
+   local U
+   local info
+
+   U, info = qcd.nersc.read_gauge(lat, fname, {unitarity = 1.23e-7, FLOATING_POINT="IEEE64BIG"})
+   printf("\n\nHEADER of %s\n", fname)
+   local i
+   local v
+   for i, v in pairs(info) do
+      if i == 'CHECKSUM' then
+         v = string.format("%x", v)
+         v = string.sub(v, 9, -1)
+         printf("   %-20s [number] %s\n", tostring(i), v)
+      else
+         printf("   %-20s [%s] %s\n", tostring(i), type(v), tostring(v))
+      end
+    end
+    printf("\n")
+    return U, info
+end
+
+
+
+L = 32
+T = 96
+config = "/pscratch/sd/h/hari_8/cl21_32_96_b6p1_m0p2850_m0p2450_cfg_1776.lime"
+
+
+lattice, volume, rand = InitLattice(L,L,L,T)
+
+
+
+U, GaugeInfo = LoadGaugeField(config, lattice, volume)

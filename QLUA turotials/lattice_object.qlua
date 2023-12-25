@@ -1,0 +1,7 @@
+require("stdlib")
+L = qcd.lattice{2,3,4}
+printf("%d,%d,%d\n",L[0],L[1],L[2])
+printf("Lattice rank=%d\n", #L)
+for i = 0, #L - 1 do
+  printf("Lattice dim[%d]=%d\n", i, L[i])
+end

@@ -1,0 +1,12 @@
+require("stdlib")
+
+L = qcd.lattice{2,3,4}
+n, d = qcd.network()
+
+printf("machine of %d nodes\n", n)
+printf("network kind: %s\n", d)
+
+ld = L:network()
+for i = 1, #ld  do
+   printf("L.network[%d] = %d\n", i, ld[i])
+end

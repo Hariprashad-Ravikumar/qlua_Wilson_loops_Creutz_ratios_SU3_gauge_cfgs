@@ -1,0 +1,1630 @@
+machine of 192 nodes
+network kind: switch
+L.network[1] = 4
+L.network[2] = 4
+L.network[3] = 4
+L.network[4] = 3
+DML_partition_in times: read 0.35  send 0.00  total 0.39
+TIME("gauge_load","done") = 0.496 secs
+TIME("gauge_stout_smear","done") = 0.396 secs
+TIME("gauge_ape_smear","done") = 6.358 secs
+init_level 0
+init_level 1
+creating MG level 0
+creating lattice: 8 8 8 24
+ndim = 4
+numsites = 64
+len = 8 8 8 24
+nsquares = 2 2 4 12
+
+creating block
+local = 0
+creating args
+creating null vecs
+0x4c66ae 0x4c66ae
+0   6   233    0.00508225  0.00564314  0.00983075  0.0389702   0.318742  
+1   3   227    0.00371959  0.00470653
+2   2   127    0.00482517  0.00618361
+3   3   182    0.00401303  0.00426296
+4   2   166    0.00461895  0.00629038
+5   2   136    0.00537236  0.00613715
+6   2   131    0.00557167  0.00662257
+7   2   118    0.00515032  0.00631733
+8   2   118    0.00449434  0.00603401
+9   2   114    0.00519565  0.00655846
+10  2   137    0.00515336  0.00656212
+11  2   158    0.00464859  0.00651794
+12  2   117    0.00538479  0.00622235
+13  2   123    0.00551304  0.0067825 
+14  2   123    0.00503477  0.00627059
+15  2   98     0.00591655  0.00706095
+16  2   126    0.00536478  0.00726105
+17  2   162    0.00517791  0.0066426 
+18  2   142    0.00482055  0.00636795
+19  2   113    0.00574239  0.00634225
+20  2   125    0.00588847  0.0067323 
+21  2   129    0.00542319  0.00667149
+22  2   152    0.00537868  0.00692689
+23  2   142    0.00565796  0.00712377
+setup its = 3399
+0    1           2.58293e-05  0.00508225
+1    1           1.38353e-05  0.00371959
+2    1           2.32822e-05  0.00482517
+3    1           1.61044e-05  0.00401303
+4    1           2.13347e-05  0.00461895
+5    1           2.88623e-05  0.00537236
+6    1           3.10435e-05  0.00557167
+7    1           2.65258e-05  0.00515032
+8    1           2.01991e-05  0.00449434
+9    1           2.69948e-05  0.00519565
+10   1           2.65571e-05  0.00515336
+11   1           2.16094e-05  0.00464859
+12   1           2.8996e-05  0.00538479
+13   1           3.03936e-05  0.00551304
+14   1           2.53489e-05  0.00503477
+15   1           3.50055e-05  0.00591655
+16   1           2.87809e-05  0.00536478
+17   1           2.68107e-05  0.0051779 
+18   1           2.32377e-05  0.00482055
+19   1           3.29751e-05  0.00574239
+20   1           3.46741e-05  0.00588847
+21   1           2.9411e-05  0.00542319
+22   1           2.89302e-05  0.00537868
+23   1           3.20125e-05  0.00565796
+0    1           2.58293e-05  0.00508225
+1    1           1.36365e-05  0.00369276
+2    1           2.34467e-05  0.00484218
+3    1           1.9502e-05  0.0044161 
+4    1           2.48461e-05  0.00498458
+5    1           2.98236e-05  0.00546109
+6    1           3.44429e-05  0.00586881
+7    1           5.03104e-05  0.00709298
+8    1           0.000141742  0.0119056 
+9    1           7.11523e-05  0.00843518
+10   1           4.36053e-05  0.00660343
+11   1           7.38976e-05  0.00859637
+12   1           0.000171082  0.0130798 
+13   1           0.000131256  0.0114567 
+14   1           9.6054e-05  0.00980072
+15   1           9.26249e-05  0.00962418
+16   1           0.000186602  0.0136602 
+17   1           7.38841e-05  0.00859559
+18   1           8.12778e-05  0.00901542
+19   1           0.000287071  0.0169432 
+20   1           0.000139742  0.0118212 
+21   1           0.000203381  0.0142612 
+22   1           0.000248223  0.0157551 
+23   1           9.92015e-05  0.00996   
+0    24576       353.771     0.119979  
+1    24576       1370.37     0.236137  
+2    24576       2162.6      0.296642  
+3    24576       2856.4      0.340921  
+4    24576       3450.94     0.374725  
+5    24576       3959.6      0.401393  
+6    24576       4416.32     0.423911  
+7    24576       4822.28     0.442966  
+8    24576       5167.44     0.458545  
+9    24576       5576.78     0.476361  
+10   24576       5896.47     0.489825  
+11   24576       6181.69     0.501531  
+12   24576       6442.61     0.512006  
+13   24576       6735.95     0.523533  
+14   24576       6993.44     0.533445  
+15   24576       7235.83     0.542611  
+16   24576       7467.67     0.551235  
+17   24576       7713.89     0.560249  
+18   24576       7921.62     0.567743  
+19   24576       8126.59     0.575041  
+20   24576       8351.75     0.582952  
+21   24576       8543.36     0.589602  
+22   24576       8727.8      0.595932  
+23   24576       8915.78     0.602315  
+get_nullvecs: 133.088 secs
+vcomp 0  ( 587827 587827 )  3.41818e-07 / 2.35131e+06 = 1.45374e-13
+vcomp 1  ( 590042 590042 )  3.42032e-07 / 2.36017e+06 = 1.44918e-13
+vcomp 0  ( 587827 587827 )  3.52725e-07 / 2.35131e+06 = 1.50012e-13
+vcomp 1  ( 590042 590042 )  3.52943e-07 / 2.36017e+06 = 1.49541e-13
+
+creating true coarse operator
+ shift  0 :  1  0  0  0
+ shift  1 :  0  1  0  0
+ shift  2 :  0  0  1  0
+ shift  3 :  0  0  0  1
+ shift  4 : -1  0  0  0
+ shift  5 :  0 -1  0  0
+ shift  6 :  0  0 -1  0
+ shift  7 :  0  0  0 -1
+ shift  8 :  0  0  0  0
+16: 0 5 10 15
+vcomp 0  ( 0.0832661 0.0832661 )  0 / 0.333064 = 0
+vcomp 1  ( 0.0163822 0.0163822 )  0 / 0.0655289 = 0
+vcomp 0  ( 1 1 )  1.3427e-13 / 4 = 3.35676e-14
+vcomp 1  ( 0 2.67365e-15 )  2.67365e-15 / 2.67365e-15 = 1
+vcomp 0  ( 1.50649 1.50649 )  1.10658e-14 / 6.02595 = 1.83636e-15
+vcomp 1  ( 0.200813 0.200813 )  1.81693e-14 / 0.803251 = 2.26197e-14
+vcomp 0  ( 0.0467622 0.0467622 )  9.38444e-16 / 0.187049 = 5.01711e-15
+vcomp 1  ( 0.013165 0.013165 )  4.59017e-16 / 0.0526599 = 8.71663e-15
+QOP_F_mgCloneOp: 131.33 secs
+creating MG level 1
+creating lattice: 4 4 4 12
+ndim = 4
+numsites = 4
+len = 4 4 4 12
+nsquares = 2 2 4 12
+
+creating block
+local = 1
+creating args
+creating null vecs
+0x4e01dc 0x4c66ae
+0   6   51     0.0145699   0.0181212   0.0313664   0.0963358   0.399913  
+1   2   24     0.0209438   0.024177  
+2   2   23     0.0221334   0.0275096 
+3   3   31     0.015952    0.0189925 
+4   2   21     0.0201906   0.0255817 
+5   3   34     0.0189589   0.0198886 
+6   3   47     0.0185418   0.0200773 
+7   2   21     0.0224285   0.0246844 
+8   2   24     0.023184    0.0287662 
+9   2   22     0.020884    0.0257683 
+10  2   23     0.023821    0.0257908 
+11  2   23     0.0231061   0.027258  
+12  2   19     0.0240239   0.0292933 
+13  2   23     0.0242027   0.0268339 
+14  2   21     0.0246745   0.0286643 
+15  2   23     0.0229297   0.0279482 
+16  2   21     0.0240826   0.0292262 
+17  2   23     0.0238341   0.0289663 
+18  3   34     0.0202575   0.0208312 
+19  2   22     0.0222914   0.0259658 
+20  2   24     0.0234538   0.0281856 
+21  2   23     0.0225657   0.0280545 
+22  2   21     0.0244929   0.029581  
+23  2   22     0.0246199   0.0282207 
+setup its = 620
+0    1           0.000212282  0.0145699 
+1    1           0.000438642  0.0209438 
+2    1           0.000489888  0.0221334 
+3    1           0.000254467  0.015952  
+4    1           0.000407659  0.0201906 
+5    1           0.00035944  0.0189589 
+6    1           0.000343797  0.0185418 
+7    1           0.000503037  0.0224285 
+8    1           0.000537496  0.023184  
+9    1           0.00043614  0.020884  
+10   1           0.000567441  0.023821  
+11   1           0.000533891  0.0231061 
+12   1           0.000577147  0.0240239 
+13   1           0.000585772  0.0242027 
+14   1           0.00060883  0.0246745 
+15   1           0.000525773  0.0229298 
+16   1           0.000579971  0.0240826 
+17   1           0.000568062  0.0238341 
+18   1           0.000410366  0.0202575 
+19   1           0.000496905  0.0222914 
+20   1           0.000550078  0.0234538 
+21   1           0.00050921  0.0225657 
+22   1           0.000599902  0.0244929 
+23   1           0.000606141  0.0246199 
+0    1           0.000212282  0.0145699 
+1    1           0.000413931  0.0203453 
+2    1           0.000442428  0.021034  
+3    1           0.000297143  0.0172378 
+4    1           0.000402607  0.0200651 
+5    1           0.000443464  0.0210586 
+6    1           0.000437688  0.020921  
+7    1           0.000653085  0.0255555 
+8    1           0.000823641  0.0286991 
+9    1           0.0018858   0.0434258 
+10   1           0.00134188  0.0366317 
+11   1           0.00126111  0.0355122 
+12   1           0.00201645  0.0449049 
+13   1           0.00183741  0.042865  
+14   1           0.00236195  0.0485999 
+15   1           0.00250811  0.050081  
+16   1           0.00298596  0.054644  
+17   1           0.00350097  0.059169  
+18   1           0.00279424  0.0528606 
+19   1           0.00493119  0.0702224 
+20   1           0.00108025  0.0328671 
+21   1           0.00303807  0.0551187 
+22   1           0.00373723  0.0611329 
+23   1           0.00219668  0.0468688 
+0    1536        36.1917     0.1535    
+1    1536        116.144     0.274981  
+2    1536        186.052     0.348034  
+3    1536        241.521     0.396535  
+4    1536        283.488     0.429607  
+5    1536        330.644     0.463965  
+6    1536        364.39      0.487066  
+7    1536        404.555     0.513208  
+8    1536        435.127     0.532246  
+9    1536        464.899     0.550154  
+10   1536        505.136     0.573467  
+11   1536        537.138     0.591354  
+12   1536        548.964     0.597828  
+13   1536        582.31      0.615717  
+14   1536        608.019     0.629163  
+15   1536        634.801     0.64287   
+16   1536        651.889     0.651465  
+17   1536        676.505     0.663651  
+18   1536        698.535     0.67437   
+19   1536        715.23      0.682382  
+20   1536        740.802     0.694473  
+21   1536        769.328     0.707718  
+22   1536        790.805     0.717529  
+23   1536        819.434     0.730401  
+get_nullvecs: 2.15951 secs
+vcomp 0  ( 37038.8 37038.8 )  3.58507e-09 / 148155 = 2.41981e-14
+vcomp 1  ( 36983.8 36983.8 )  3.83576e-09 / 147935 = 2.59286e-14
+vcomp 0  ( 37038.8 37038.8 )  4.14544e-09 / 148155 = 2.79804e-14
+vcomp 1  ( 36983.8 36983.8 )  4.38877e-09 / 147935 = 2.96668e-14
+
+creating true coarse operator
+ shift  0 :  1  0  0  0
+ shift  1 :  0  1  0  0
+ shift  2 :  0  0  1  0
+ shift  3 :  0  0  0  1
+ shift  4 : -1  0  0  0
+ shift  5 :  0 -1  0  0
+ shift  6 :  0  0 -1  0
+ shift  7 :  0  0  0 -1
+ shift  8 :  0  0  0  0
+16: 0 5 10 15
+vcomp 0  ( 0.366022 0.366022 )  0 / 1.46409 = 0
+vcomp 1  ( 0.0264147 0.0264147 )  0 / 0.105659 = 0
+vcomp 0  ( 1 1 )  9.13003e-15 / 4 = 2.28251e-15
+vcomp 1  ( 0 4.53728e-15 )  4.53728e-15 / 4.53728e-15 = 1
+vcomp 0  ( 1.44935 1.44935 )  2.83283e-14 / 5.7974 = 4.88638e-15
+vcomp 1  ( 0.095253 0.095253 )  5.65169e-15 / 0.381012 = 1.48334e-14
+vcomp 0  ( 0.198178 0.198178 )  6.57089e-15 / 0.79271 = 8.28914e-15
+vcomp 1  ( 0.0264357 0.0264357 )  1.18308e-15 / 0.105743 = 1.11882e-14
+QOP_F_mgCloneOp: 1.22918 secs
+TIME("set up mg solver","done") = 268.396 secs
+TIME("make_mg_solver","done") = 268.396 secs
+momentum smearing with ( 0 0 0 0 )
+TIME("make_mom_smear_fct","done") = 0.010 secs
+TIME("smear[cpu]","done") = 0.111 secs
+TIME("frw_prop_source.1792.x0y0z0t0","done") = 0.145 secs
+iters =   21  secs = 6.203329  rsq = 2.52133e-16
+level 0 count 21 tpre 0.01 tcoarse 3.41 tpost 1.99 trest 1.48 tprol 1.40
+level 1 count 39 tpre 0.00 tcoarse 0.10 tpost 0.32 trest 0.00 tprol 0.00
+iters =   21  secs = 6.177967  rsq = 1.87352e-16
+level 0 count 21 tpre 0.01 tcoarse 3.40 tpost 1.99 trest 1.46 tprol 1.40
+level 1 count 40 tpre 0.00 tcoarse 0.10 tpost 0.33 trest 0.00 tprol 0.00
+iters =   21  secs = 6.165124  rsq = 2.24323e-16
+level 0 count 21 tpre 0.01 tcoarse 3.38 tpost 1.99 trest 1.47 tprol 1.40
+level 1 count 38 tpre 0.00 tcoarse 0.09 tpost 0.31 trest 0.00 tprol 0.00
+iters =   21  secs = 6.170371  rsq = 2.18861e-16
+level 0 count 21 tpre 0.01 tcoarse 3.39 tpost 1.99 trest 1.47 tprol 1.41
+level 1 count 38 tpre 0.00 tcoarse 0.09 tpost 0.31 trest 0.00 tprol 0.00
+iters =   20  secs = 5.862588  rsq = 9.93079e-16
+level 0 count 20 tpre 0.01 tcoarse 3.21 tpost 1.89 trest 1.39 tprol 1.33
+level 1 count 37 tpre 0.00 tcoarse 0.09 tpost 0.30 trest 0.00 tprol 0.00
+iters =   21  secs = 6.147159  rsq = 2.53637e-16
+level 0 count 21 tpre 0.01 tcoarse 3.37 tpost 1.99 trest 1.46 tprol 1.40
+level 1 count 38 tpre 0.00 tcoarse 0.09 tpost 0.31 trest 0.00 tprol 0.00
+iters =   20  secs = 5.913874  rsq = 9.74678e-16
+level 0 count 20 tpre 0.01 tcoarse 3.26 tpost 1.90 trest 1.40 tprol 1.34
+level 1 count 40 tpre 0.00 tcoarse 0.09 tpost 0.32 trest 0.00 tprol 0.00
+iters =   21  secs = 6.155483  rsq = 2.51183e-16
+level 0 count 21 tpre 0.01 tcoarse 3.37 tpost 1.99 trest 1.46 tprol 1.40
+level 1 count 39 tpre 0.00 tcoarse 0.09 tpost 0.32 trest 0.00 tprol 0.00
+iters =   21  secs = 6.182003  rsq = 2.49746e-16
+level 0 count 21 tpre 0.01 tcoarse 3.38 tpost 2.00 trest 1.46 tprol 1.40
+level 1 count 40 tpre 0.00 tcoarse 0.09 tpost 0.33 trest 0.00 tprol 0.00
+iters =   21  secs = 6.157382  rsq = 2.09094e-16
+level 0 count 21 tpre 0.01 tcoarse 3.38 tpost 1.99 trest 1.46 tprol 1.41
+level 1 count 39 tpre 0.00 tcoarse 0.09 tpost 0.32 trest 0.00 tprol 0.00
+iters =   20  secs = 5.900122  rsq = 8.79936e-16
+level 0 count 20 tpre 0.01 tcoarse 3.25 tpost 1.90 trest 1.40 tprol 1.34
+level 1 count 40 tpre 0.00 tcoarse 0.09 tpost 0.32 trest 0.00 tprol 0.00
+iters =   21  secs = 6.183612  rsq = 2.01636e-16
+level 0 count 21 tpre 0.01 tcoarse 3.40 tpost 1.99 trest 1.46 tprol 1.40
+level 1 count 41 tpre 0.00 tcoarse 0.10 tpost 0.33 trest 0.00 tprol 0.00
+TIME("smear[cpu]","done") = 8.995 secs
+TIME("frw_prop.1792.x0y0z0t0","done") = 83.722 secs
+TIME("fwd_prop-write","done") = 9.178 secs
+TIME("sm_fwd_prop-write","done") = 7.350 secs
+doing sink momentum 0 0 0 0
+The sink time is 10
+computing (1-g4) projected prop
+TIME("c3pt","bwd_source") = 0.397 secs
+TIME("smear[cpu]","done") = 1.249 secs
+iters =   21  secs = 6.208938  rsq = 2.44728e-16
+level 0 count 21 tpre 0.01 tcoarse 3.42 tpost 2.00 trest 1.47 tprol 1.41
+level 1 count 41 tpre 0.00 tcoarse 0.10 tpost 0.33 trest 0.00 tprol 0.00
+iters =   21  secs = 6.170157  rsq = 2.76624e-16
+level 0 count 21 tpre 0.01 tcoarse 3.39 tpost 1.99 trest 1.46 tprol 1.40
+level 1 count 40 tpre 0.00 tcoarse 0.10 tpost 0.32 trest 0.00 tprol 0.00
+iters =   21  secs = 6.198541  rsq = 2.08423e-16
+level 0 count 21 tpre 0.01 tcoarse 3.42 tpost 1.99 trest 1.46 tprol 1.40
+level 1 count 42 tpre 0.00 tcoarse 0.10 tpost 0.34 trest 0.00 tprol 0.00
+iters =   21  secs = 6.194952  rsq = 2.37141e-16
+level 0 count 21 tpre 0.01 tcoarse 3.42 tpost 1.99 trest 1.47 tprol 1.40
+level 1 count 42 tpre 0.00 tcoarse 0.10 tpost 0.34 trest 0.00 tprol 0.00
+iters =   21  secs = 6.194976  rsq = 2.54675e-16
+level 0 count 21 tpre 0.01 tcoarse 3.42 tpost 1.99 trest 1.47 tprol 1.40
+level 1 count 41 tpre 0.00 tcoarse 0.10 tpost 0.33 trest 0.00 tprol 0.00
+iters =   21  secs = 6.186823  rsq = 2.15604e-16
+level 0 count 21 tpre 0.01 tcoarse 3.40 tpost 1.99 trest 1.46 tprol 1.40
+level 1 count 42 tpre 0.00 tcoarse 0.10 tpost 0.34 trest 0.00 tprol 0.00
+TIME("c3pt","bwd_prop") = 39.487 secs
+TIME("seq_prop-write","done") = 7.177 secs
+TIME("smear[cpu]","done") = 8.957 secs
+seq check: complex(6.69484e-10, 4.93994e-10)
+doing sink momentum 0 0 0 0
+The sink time is 10
+computing (1-g4) projected prop
+TIME("c3pt","bwd_source") = 0.446 secs
+TIME("smear[cpu]","done") = 1.256 secs
+iters =   21  secs = 6.161238  rsq = 2.44728e-16
+level 0 count 21 tpre 0.01 tcoarse 3.38 tpost 1.99 trest 1.46 tprol 1.40
+level 1 count 41 tpre 0.00 tcoarse 0.09 tpost 0.32 trest 0.00 tprol 0.00
+iters =   21  secs = 6.157637  rsq = 2.70282e-16
+level 0 count 21 tpre 0.01 tcoarse 3.38 tpost 1.99 trest 1.47 tprol 1.41
+level 1 count 40 tpre 0.00 tcoarse 0.09 tpost 0.31 trest 0.00 tprol 0.00
+iters =   21  secs = 6.177938  rsq = 2.08423e-16
+level 0 count 21 tpre 0.01 tcoarse 3.40 tpost 1.99 trest 1.47 tprol 1.40
+level 1 count 42 tpre 0.00 tcoarse 0.10 tpost 0.33 trest 0.00 tprol 0.00
+iters =   21  secs = 6.169677  rsq = 1.99822e-16
+level 0 count 21 tpre 0.01 tcoarse 3.39 tpost 1.99 trest 1.46 tprol 1.40
+level 1 count 42 tpre 0.00 tcoarse 0.09 tpost 0.32 trest 0.00 tprol 0.00
+iters =   21  secs = 6.177689  rsq = 2.54675e-16
+level 0 count 21 tpre 0.01 tcoarse 3.40 tpost 1.99 trest 1.47 tprol 1.40
+level 1 count 41 tpre 0.00 tcoarse 0.10 tpost 0.32 trest 0.00 tprol 0.00
+iters =   20  secs = 5.885034  rsq = 9.96397e-16
+level 0 count 20 tpre 0.01 tcoarse 3.24 tpost 1.89 trest 1.40 tprol 1.34
+level 1 count 40 tpre 0.00 tcoarse 0.09 tpost 0.31 trest 0.00 tprol 0.00
+TIME("c3pt","bwd_prop") = 39.112 secs
+TIME("seq_prop-write","done") = 6.949 secs
+TIME("smear[cpu]","done") = 8.956 secs
+seq check: complex(1.33897e-09, 9.87988e-10)
+TIME("smear[cpu]","done") = 0.083 secs
+TIME("frw_prop_source.1792.x8y0z0t0","done") = 0.117 secs
+iters =   20  secs = 5.865916  rsq = 7.74992e-16
+level 0 count 20 tpre 0.01 tcoarse 3.22 tpost 1.89 trest 1.40 tprol 1.34
+level 1 count 38 tpre 0.00 tcoarse 0.09 tpost 0.30 trest 0.00 tprol 0.00
+iters =   21  secs = 6.168131  rsq = 2.04694e-16
+level 0 count 21 tpre 0.01 tcoarse 3.38 tpost 1.99 trest 1.47 tprol 1.41
+level 1 count 39 tpre 0.00 tcoarse 0.09 tpost 0.31 trest 0.00 tprol 0.00
+iters =   20  secs = 5.874178  rsq = 8.97536e-16
+level 0 count 20 tpre 0.01 tcoarse 3.22 tpost 1.90 trest 1.40 tprol 1.34
+level 1 count 37 tpre 0.00 tcoarse 0.09 tpost 0.29 trest 0.00 tprol 0.00
+iters =   21  secs = 6.160351  rsq = 2.20884e-16
+level 0 count 21 tpre 0.01 tcoarse 3.38 tpost 1.99 trest 1.47 tprol 1.40
+level 1 count 39 tpre 0.00 tcoarse 0.09 tpost 0.31 trest 0.00 tprol 0.00
+iters =   20  secs = 5.878452  rsq = 8.82647e-16
+level 0 count 20 tpre 0.01 tcoarse 3.23 tpost 1.89 trest 1.40 tprol 1.34
+level 1 count 38 tpre 0.00 tcoarse 0.09 tpost 0.30 trest 0.00 tprol 0.00
+iters =   21  secs = 6.148053  rsq = 1.96075e-16
+level 0 count 21 tpre 0.01 tcoarse 3.37 tpost 1.99 trest 1.46 tprol 1.40
+level 1 count 39 tpre 0.00 tcoarse 0.09 tpost 0.31 trest 0.00 tprol 0.00
+iters =   21  secs = 6.151668  rsq = 1.89563e-16
+level 0 count 21 tpre 0.01 tcoarse 3.37 tpost 1.99 trest 1.46 tprol 1.40
+level 1 count 39 tpre 0.00 tcoarse 0.09 tpost 0.31 trest 0.00 tprol 0.00
+iters =   20  secs = 5.881102  rsq = 9.57849e-16
+level 0 count 20 tpre 0.01 tcoarse 3.23 tpost 1.89 trest 1.40 tprol 1.34
+level 1 count 39 tpre 0.00 tcoarse 0.09 tpost 0.31 trest 0.00 tprol 0.00
+iters =   20  secs = 5.882881  rsq = 7.60736e-16
+level 0 count 20 tpre 0.01 tcoarse 3.24 tpost 1.89 trest 1.40 tprol 1.34
+level 1 count 39 tpre 0.00 tcoarse 0.09 tpost 0.31 trest 0.00 tprol 0.00
+iters =   21  secs = 6.153312  rsq = 1.91967e-16
+level 0 count 21 tpre 0.01 tcoarse 3.37 tpost 1.99 trest 1.46 tprol 1.40
+level 1 count 40 tpre 0.00 tcoarse 0.09 tpost 0.32 trest 0.00 tprol 0.00
+iters =   20  secs = 5.864797  rsq = 9.89308e-16
+level 0 count 20 tpre 0.01 tcoarse 3.22 tpost 1.89 trest 1.39 tprol 1.33
+level 1 count 38 tpre 0.00 tcoarse 0.09 tpost 0.30 trest 0.00 tprol 0.00
+iters =   21  secs = 6.147522  rsq = 1.92709e-16
+level 0 count 21 tpre 0.01 tcoarse 3.37 tpost 1.99 trest 1.46 tprol 1.40
+level 1 count 39 tpre 0.00 tcoarse 0.09 tpost 0.31 trest 0.00 tprol 0.00
+TIME("smear[cpu]","done") = 8.969 secs
+TIME("frw_prop.1792.x8y0z0t0","done") = 82.485 secs
+TIME("fwd_prop-write","done") = 7.546 secs
+TIME("sm_fwd_prop-write","done") = 8.866 secs
+doing sink momentum 0 0 0 0
+The sink time is 10
+computing (1-g4) projected prop
+TIME("c3pt","bwd_source") = 0.401 secs
+TIME("smear[cpu]","done") = 1.252 secs
+iters =   21  secs = 6.206414  rsq = 2.79945e-16
+level 0 count 21 tpre 0.01 tcoarse 3.41 tpost 2.00 trest 1.46 tprol 1.41
+level 1 count 41 tpre 0.00 tcoarse 0.10 tpost 0.33 trest 0.00 tprol 0.00
+iters =   21  secs = 6.207594  rsq = 2.15045e-16
+level 0 count 21 tpre 0.01 tcoarse 3.43 tpost 1.99 trest 1.47 tprol 1.40
+level 1 count 42 tpre 0.00 tcoarse 0.10 tpost 0.34 trest 0.00 tprol 0.00
+iters =   21  secs = 6.189794  rsq = 2.78052e-16
+level 0 count 21 tpre 0.01 tcoarse 3.41 tpost 1.99 trest 1.47 tprol 1.41
+level 1 count 41 tpre 0.00 tcoarse 0.09 tpost 0.33 trest 0.00 tprol 0.00
+iters =   21  secs = 6.201994  rsq = 2.59326e-16
+level 0 count 21 tpre 0.01 tcoarse 3.42 tpost 1.99 trest 1.47 tprol 1.41
+level 1 count 41 tpre 0.00 tcoarse 0.10 tpost 0.33 trest 0.00 tprol 0.00
+iters =   21  secs = 6.202917  rsq = 2.07019e-16
+level 0 count 21 tpre 0.01 tcoarse 3.42 tpost 1.99 trest 1.47 tprol 1.41
+level 1 count 42 tpre 0.00 tcoarse 0.09 tpost 0.34 trest 0.00 tprol 0.00
+iters =   21  secs = 6.201228  rsq = 2.29535e-16
+level 0 count 21 tpre 0.01 tcoarse 3.42 tpost 1.99 trest 1.47 tprol 1.41
+level 1 count 41 tpre 0.00 tcoarse 0.10 tpost 0.33 trest 0.00 tprol 0.00
+TIME("c3pt","bwd_prop") = 39.541 secs
+TIME("seq_prop-write","done") = 7.384 secs
+TIME("smear[cpu]","done") = 8.963 secs
+seq check: complex(-1.40286e-10, 1.1014e-10)
+doing sink momentum 0 0 0 0
+The sink time is 10
+computing (1-g4) projected prop
+TIME("c3pt","bwd_source") = 0.449 secs
+TIME("smear[cpu]","done") = 1.253 secs
+iters =   21  secs = 6.186288  rsq = 2.79945e-16
+level 0 count 21 tpre 0.01 tcoarse 3.40 tpost 1.99 trest 1.47 tprol 1.41
+level 1 count 41 tpre 0.00 tcoarse 0.10 tpost 0.33 trest 0.00 tprol 0.00
+iters =   21  secs = 6.183213  rsq = 2.22452e-16
+level 0 count 21 tpre 0.01 tcoarse 3.40 tpost 1.99 trest 1.47 tprol 1.41
+level 1 count 41 tpre 0.00 tcoarse 0.09 tpost 0.32 trest 0.00 tprol 0.00
+iters =   21  secs = 6.175245  rsq = 2.78052e-16
+level 0 count 21 tpre 0.01 tcoarse 3.39 tpost 1.99 trest 1.47 tprol 1.40
+level 1 count 41 tpre 0.00 tcoarse 0.09 tpost 0.32 trest 0.00 tprol 0.00
+iters =   20  secs = 5.889346  rsq = 9.06119e-16
+level 0 count 20 tpre 0.01 tcoarse 3.24 tpost 1.89 trest 1.40 tprol 1.34
+level 1 count 40 tpre 0.00 tcoarse 0.09 tpost 0.32 trest 0.00 tprol 0.00
+iters =   21  secs = 6.184721  rsq = 2.07019e-16
+level 0 count 21 tpre 0.01 tcoarse 3.40 tpost 1.99 trest 1.47 tprol 1.40
+level 1 count 42 tpre 0.00 tcoarse 0.09 tpost 0.33 trest 0.00 tprol 0.00
+iters =   21  secs = 6.174347  rsq = 2.0583e-16
+level 0 count 21 tpre 0.01 tcoarse 3.39 tpost 1.99 trest 1.46 tprol 1.40
+level 1 count 41 tpre 0.00 tcoarse 0.10 tpost 0.32 trest 0.00 tprol 0.00
+TIME("c3pt","bwd_prop") = 39.175 secs
+TIME("seq_prop-write","done") = 6.868 secs
+TIME("smear[cpu]","done") = 8.965 secs
+seq check: complex(-2.80572e-10, 2.20279e-10)
+TIME("smear[cpu]","done") = 0.084 secs
+TIME("frw_prop_source.1792.x16y0z0t0","done") = 0.117 secs
+iters =   21  secs = 6.160308  rsq = 1.93908e-16
+level 0 count 21 tpre 0.01 tcoarse 3.38 tpost 1.99 trest 1.46 tprol 1.40
+level 1 count 40 tpre 0.00 tcoarse 0.09 tpost 0.32 trest 0.00 tprol 0.00
+iters =   20  secs = 5.857909  rsq = 8.77826e-16
+level 0 count 20 tpre 0.01 tcoarse 3.21 tpost 1.89 trest 1.39 tprol 1.33
+level 1 count 38 tpre 0.00 tcoarse 0.08 tpost 0.30 trest 0.00 tprol 0.00
+iters =   20  secs = 5.861305  rsq = 9.099e-16
+level 0 count 20 tpre 0.01 tcoarse 3.20 tpost 1.90 trest 1.39 tprol 1.33
+level 1 count 37 tpre 0.00 tcoarse 0.09 tpost 0.29 trest 0.00 tprol 0.00
+iters =   21  secs = 6.144680  rsq = 2.03018e-16
+level 0 count 21 tpre 0.01 tcoarse 3.37 tpost 1.99 trest 1.46 tprol 1.39
+level 1 count 39 tpre 0.00 tcoarse 0.10 tpost 0.31 trest 0.00 tprol 0.00
+iters =   20  secs = 5.859074  rsq = 9.61615e-16
+level 0 count 20 tpre 0.01 tcoarse 3.21 tpost 1.89 trest 1.39 tprol 1.33
+level 1 count 38 tpre 0.00 tcoarse 0.09 tpost 0.30 trest 0.00 tprol 0.00
+iters =   20  secs = 5.858808  rsq = 8.90643e-16
+level 0 count 20 tpre 0.01 tcoarse 3.21 tpost 1.89 trest 1.39 tprol 1.33
+level 1 count 38 tpre 0.00 tcoarse 0.09 tpost 0.30 trest 0.00 tprol 0.00
+iters =   20  secs = 5.870296  rsq = 9.62944e-16
+level 0 count 20 tpre 0.01 tcoarse 3.23 tpost 1.89 trest 1.39 tprol 1.33
+level 1 count 39 tpre 0.00 tcoarse 0.09 tpost 0.31 trest 0.00 tprol 0.00
+iters =   21  secs = 6.159334  rsq = 2.40395e-16
+level 0 count 21 tpre 0.01 tcoarse 3.38 tpost 1.99 trest 1.46 tprol 1.40
+level 1 count 41 tpre 0.00 tcoarse 0.09 tpost 0.32 trest 0.00 tprol 0.00
+iters =   21  secs = 6.166660  rsq = 2.66058e-16
+level 0 count 21 tpre 0.01 tcoarse 3.39 tpost 1.99 trest 1.46 tprol 1.40
+level 1 count 42 tpre 0.00 tcoarse 0.09 tpost 0.33 trest 0.00 tprol 0.00
+iters =   21  secs = 6.166277  rsq = 2.19738e-16
+level 0 count 21 tpre 0.01 tcoarse 3.39 tpost 1.99 trest 1.46 tprol 1.40
+level 1 count 41 tpre 0.00 tcoarse 0.09 tpost 0.32 trest 0.00 tprol 0.00
+iters =   21  secs = 6.167720  rsq = 2.42077e-16
+level 0 count 21 tpre 0.01 tcoarse 3.39 tpost 1.99 trest 1.46 tprol 1.40
+level 1 count 42 tpre 0.00 tcoarse 0.09 tpost 0.33 trest 0.00 tprol 0.00
+iters =   20  secs = 5.883738  rsq = 9.50835e-16
+level 0 count 20 tpre 0.01 tcoarse 3.24 tpost 1.89 trest 1.39 tprol 1.33
+level 1 count 40 tpre 0.00 tcoarse 0.09 tpost 0.32 trest 0.00 tprol 0.00
+TIME("smear[cpu]","done") = 8.961 secs
+TIME("frw_prop.1792.x16y0z0t0","done") = 82.450 secs
+TIME("fwd_prop-write","done") = 6.709 secs
+TIME("sm_fwd_prop-write","done") = 6.475 secs
+doing sink momentum 0 0 0 0
+The sink time is 10
+computing (1-g4) projected prop
+TIME("c3pt","bwd_source") = 0.400 secs
+TIME("smear[cpu]","done") = 1.247 secs
+iters =   21  secs = 6.193900  rsq = 2.42832e-16
+level 0 count 21 tpre 0.01 tcoarse 3.40 tpost 2.00 trest 1.47 tprol 1.41
+level 1 count 41 tpre 0.00 tcoarse 0.09 tpost 0.33 trest 0.00 tprol 0.00
+iters =   21  secs = 6.199179  rsq = 2.48633e-16
+level 0 count 21 tpre 0.01 tcoarse 3.41 tpost 1.99 trest 1.47 tprol 1.41
+level 1 count 41 tpre 0.00 tcoarse 0.09 tpost 0.33 trest 0.00 tprol 0.00
+iters =   21  secs = 6.207268  rsq = 2.17853e-16
+level 0 count 21 tpre 0.01 tcoarse 3.42 tpost 1.99 trest 1.47 tprol 1.41
+level 1 count 42 tpre 0.00 tcoarse 0.10 tpost 0.34 trest 0.00 tprol 0.00
+iters =   21  secs = 6.214204  rsq = 1.97084e-16
+level 0 count 21 tpre 0.01 tcoarse 3.43 tpost 1.99 trest 1.46 tprol 1.41
+level 1 count 42 tpre 0.00 tcoarse 0.10 tpost 0.35 trest 0.00 tprol 0.00
+iters =   21  secs = 6.192871  rsq = 2.13012e-16
+level 0 count 21 tpre 0.01 tcoarse 3.41 tpost 1.99 trest 1.46 tprol 1.40
+level 1 count 42 tpre 0.00 tcoarse 0.09 tpost 0.34 trest 0.00 tprol 0.00
+iters =   21  secs = 6.210247  rsq = 2.52811e-16
+level 0 count 21 tpre 0.01 tcoarse 3.43 tpost 1.99 trest 1.47 tprol 1.40
+level 1 count 42 tpre 0.00 tcoarse 0.10 tpost 0.35 trest 0.00 tprol 0.00
+TIME("c3pt","bwd_prop") = 39.545 secs
+TIME("seq_prop-write","done") = 7.477 secs
+TIME("smear[cpu]","done") = 8.959 secs
+seq check: complex(5.36587e-10, 4.35398e-10)
+doing sink momentum 0 0 0 0
+The sink time is 10
+computing (1-g4) projected prop
+TIME("c3pt","bwd_source") = 0.444 secs
+TIME("smear[cpu]","done") = 1.249 secs
+iters =   21  secs = 6.170906  rsq = 2.42832e-16
+level 0 count 21 tpre 0.01 tcoarse 3.39 tpost 1.99 trest 1.46 tprol 1.40
+level 1 count 41 tpre 0.00 tcoarse 0.09 tpost 0.32 trest 0.00 tprol 0.00
+iters =   21  secs = 6.188169  rsq = 2.24869e-16
+level 0 count 21 tpre 0.01 tcoarse 3.41 tpost 1.99 trest 1.47 tprol 1.41
+level 1 count 41 tpre 0.00 tcoarse 0.09 tpost 0.32 trest 0.00 tprol 0.00
+iters =   21  secs = 6.199788  rsq = 2.17853e-16
+level 0 count 21 tpre 0.01 tcoarse 3.42 tpost 1.99 trest 1.47 tprol 1.41
+level 1 count 42 tpre 0.00 tcoarse 0.10 tpost 0.33 trest 0.00 tprol 0.00
+iters =   21  secs = 6.169750  rsq = 2.26908e-16
+level 0 count 21 tpre 0.01 tcoarse 3.39 tpost 1.99 trest 1.47 tprol 1.41
+level 1 count 40 tpre 0.00 tcoarse 0.09 tpost 0.32 trest 0.00 tprol 0.00
+iters =   21  secs = 6.221628  rsq = 2.13012e-16
+level 0 count 21 tpre 0.01 tcoarse 3.44 tpost 1.99 trest 1.47 tprol 1.44
+level 1 count 42 tpre 0.00 tcoarse 0.09 tpost 0.33 trest 0.00 tprol 0.00
+iters =   21  secs = 6.183053  rsq = 2.45255e-16
+level 0 count 21 tpre 0.01 tcoarse 3.40 tpost 1.99 trest 1.47 tprol 1.41
+level 1 count 41 tpre 0.00 tcoarse 0.09 tpost 0.32 trest 0.00 tprol 0.00
+TIME("c3pt","bwd_prop") = 39.510 secs
+TIME("seq_prop-write","done") = 6.453 secs
+TIME("smear[cpu]","done") = 8.959 secs
+seq check: complex(1.07317e-09, 8.70796e-10)
+TIME("smear[cpu]","done") = 0.083 secs
+TIME("frw_prop_source.1792.x24y0z0t0","done") = 0.117 secs
+iters =   20  secs = 5.886620  rsq = 7.5536e-16
+level 0 count 20 tpre 0.01 tcoarse 3.24 tpost 1.89 trest 1.40 tprol 1.34
+level 1 count 39 tpre 0.00 tcoarse 0.09 tpost 0.31 trest 0.00 tprol 0.00
+iters =   21  secs = 6.146880  rsq = 1.92561e-16
+level 0 count 21 tpre 0.01 tcoarse 3.37 tpost 1.99 trest 1.47 tprol 1.40
+level 1 count 38 tpre 0.00 tcoarse 0.09 tpost 0.30 trest 0.00 tprol 0.00
+iters =   21  secs = 6.168576  rsq = 2.1663e-16
+level 0 count 21 tpre 0.01 tcoarse 3.39 tpost 1.99 trest 1.47 tprol 1.40
+level 1 count 40 tpre 0.00 tcoarse 0.09 tpost 0.32 trest 0.00 tprol 0.00
+iters =   21  secs = 6.155026  rsq = 1.8539e-16
+level 0 count 21 tpre 0.01 tcoarse 3.38 tpost 1.99 trest 1.46 tprol 1.41
+level 1 count 39 tpre 0.00 tcoarse 0.09 tpost 0.31 trest 0.00 tprol 0.00
+iters =   20  secs = 5.863542  rsq = 8.64067e-16
+level 0 count 20 tpre 0.01 tcoarse 3.22 tpost 1.89 trest 1.39 tprol 1.33
+level 1 count 38 tpre 0.00 tcoarse 0.09 tpost 0.30 trest 0.00 tprol 0.00
+iters =   20  secs = 5.851078  rsq = 9.12795e-16
+level 0 count 20 tpre 0.01 tcoarse 3.20 tpost 1.89 trest 1.39 tprol 1.33
+level 1 count 37 tpre 0.00 tcoarse 0.09 tpost 0.29 trest 0.00 tprol 0.00
+iters =   21  secs = 6.146949  rsq = 2.46889e-16
+level 0 count 21 tpre 0.01 tcoarse 3.37 tpost 1.99 trest 1.46 tprol 1.40
+level 1 count 39 tpre 0.00 tcoarse 0.09 tpost 0.31 trest 0.00 tprol 0.00
+iters =   21  secs = 6.151560  rsq = 2.92499e-16
+level 0 count 21 tpre 0.01 tcoarse 3.37 tpost 1.99 trest 1.46 tprol 1.40
+level 1 count 38 tpre 0.00 tcoarse 0.09 tpost 0.31 trest 0.00 tprol 0.00
+iters =   20  secs = 5.838648  rsq = 9.19207e-16
+level 0 count 20 tpre 0.01 tcoarse 3.19 tpost 1.89 trest 1.39 tprol 1.33
+level 1 count 37 tpre 0.00 tcoarse 0.08 tpost 0.29 trest 0.00 tprol 0.00
+iters =   20  secs = 5.861760  rsq = 9.22383e-16
+level 0 count 20 tpre 0.01 tcoarse 3.22 tpost 1.89 trest 1.39 tprol 1.33
+level 1 count 38 tpre 0.00 tcoarse 0.09 tpost 0.30 trest 0.00 tprol 0.00
+iters =   21  secs = 6.147813  rsq = 2.38258e-16
+level 0 count 21 tpre 0.01 tcoarse 3.36 tpost 1.99 trest 1.46 tprol 1.40
+level 1 count 38 tpre 0.00 tcoarse 0.09 tpost 0.30 trest 0.00 tprol 0.00
+iters =   20  secs = 5.859721  rsq = 9.73772e-16
+level 0 count 20 tpre 0.01 tcoarse 3.21 tpost 1.89 trest 1.39 tprol 1.33
+level 1 count 38 tpre 0.00 tcoarse 0.09 tpost 0.30 trest 0.00 tprol 0.00
+TIME("smear[cpu]","done") = 8.937 secs
+TIME("frw_prop.1792.x24y0z0t0","done") = 82.386 secs
+TIME("fwd_prop-write","done") = 8.100 secs
+TIME("sm_fwd_prop-write","done") = 7.115 secs
+doing sink momentum 0 0 0 0
+The sink time is 10
+computing (1-g4) projected prop
+TIME("c3pt","bwd_source") = 0.400 secs
+TIME("smear[cpu]","done") = 1.251 secs
+iters =   21  secs = 6.202084  rsq = 2.32616e-16
+level 0 count 21 tpre 0.01 tcoarse 3.42 tpost 1.99 trest 1.46 tprol 1.40
+level 1 count 42 tpre 0.00 tcoarse 0.10 tpost 0.34 trest 0.00 tprol 0.00
+iters =   21  secs = 6.205488  rsq = 2.23551e-16
+level 0 count 21 tpre 0.01 tcoarse 3.41 tpost 2.00 trest 1.47 tprol 1.40
+level 1 count 42 tpre 0.00 tcoarse 0.10 tpost 0.34 trest 0.00 tprol 0.00
+iters =   21  secs = 6.195864  rsq = 2.13172e-16
+level 0 count 21 tpre 0.01 tcoarse 3.42 tpost 1.99 trest 1.47 tprol 1.40
+level 1 count 41 tpre 0.00 tcoarse 0.10 tpost 0.33 trest 0.00 tprol 0.00
+iters =   21  secs = 6.181946  rsq = 3.26979e-16
+level 0 count 21 tpre 0.01 tcoarse 3.40 tpost 1.99 trest 1.47 tprol 1.40
+level 1 count 40 tpre 0.00 tcoarse 0.10 tpost 0.32 trest 0.00 tprol 0.00
+iters =   21  secs = 6.214049  rsq = 2.81926e-16
+level 0 count 21 tpre 0.01 tcoarse 3.43 tpost 1.99 trest 1.47 tprol 1.41
+level 1 count 42 tpre 0.00 tcoarse 0.09 tpost 0.34 trest 0.00 tprol 0.00
+iters =   21  secs = 6.194297  rsq = 2.78618e-16
+level 0 count 21 tpre 0.01 tcoarse 3.41 tpost 1.99 trest 1.47 tprol 1.40
+level 1 count 41 tpre 0.00 tcoarse 0.10 tpost 0.33 trest 0.00 tprol 0.00
+TIME("c3pt","bwd_prop") = 39.525 secs
+TIME("seq_prop-write","done") = 6.685 secs
+TIME("smear[cpu]","done") = 8.958 secs
+seq check: complex(1.57726e-10, -3.66389e-11)
+doing sink momentum 0 0 0 0
+The sink time is 10
+computing (1-g4) projected prop
+TIME("c3pt","bwd_source") = 0.432 secs
+TIME("smear[cpu]","done") = 1.255 secs
+iters =   21  secs = 6.184320  rsq = 2.32616e-16
+level 0 count 21 tpre 0.01 tcoarse 3.40 tpost 1.99 trest 1.47 tprol 1.40
+level 1 count 42 tpre 0.00 tcoarse 0.09 tpost 0.33 trest 0.00 tprol 0.00
+iters =   21  secs = 6.181680  rsq = 2.27618e-16
+level 0 count 21 tpre 0.01 tcoarse 3.40 tpost 1.99 trest 1.47 tprol 1.41
+level 1 count 41 tpre 0.00 tcoarse 0.09 tpost 0.32 trest 0.00 tprol 0.00
+iters =   21  secs = 6.184025  rsq = 2.13172e-16
+level 0 count 21 tpre 0.01 tcoarse 3.40 tpost 1.99 trest 1.47 tprol 1.41
+level 1 count 41 tpre 0.00 tcoarse 0.10 tpost 0.32 trest 0.00 tprol 0.00
+iters =   21  secs = 6.164871  rsq = 3.07927e-16
+level 0 count 21 tpre 0.01 tcoarse 3.38 tpost 1.99 trest 1.47 tprol 1.41
+level 1 count 39 tpre 0.00 tcoarse 0.09 tpost 0.31 trest 0.00 tprol 0.00
+iters =   21  secs = 6.196753  rsq = 2.81925e-16
+level 0 count 21 tpre 0.01 tcoarse 3.41 tpost 1.99 trest 1.48 tprol 1.40
+level 1 count 42 tpre 0.00 tcoarse 0.09 tpost 0.33 trest 0.00 tprol 0.00
+iters =   21  secs = 6.180413  rsq = 2.43415e-16
+level 0 count 21 tpre 0.01 tcoarse 3.40 tpost 1.99 trest 1.47 tprol 1.40
+level 1 count 41 tpre 0.00 tcoarse 0.09 tpost 0.32 trest 0.00 tprol 0.00
+TIME("c3pt","bwd_prop") = 39.475 secs
+TIME("seq_prop-write","done") = 9.125 secs
+TIME("smear[cpu]","done") = 8.971 secs
+seq check: complex(3.15451e-10, -7.32779e-11)
+TIME("smear[cpu]","done") = 0.083 secs
+TIME("frw_prop_source.1792.x0y8z0t0","done") = 0.117 secs
+iters =   20  secs = 5.879538  rsq = 9.50103e-16
+level 0 count 20 tpre 0.01 tcoarse 3.23 tpost 1.89 trest 1.40 tprol 1.34
+level 1 count 39 tpre 0.00 tcoarse 0.09 tpost 0.31 trest 0.00 tprol 0.00
+iters =   20  secs = 5.866466  rsq = 9.56564e-16
+level 0 count 20 tpre 0.01 tcoarse 3.22 tpost 1.89 trest 1.39 tprol 1.33
+level 1 count 38 tpre 0.00 tcoarse 0.09 tpost 0.30 trest 0.00 tprol 0.00
+iters =   21  secs = 6.160051  rsq = 2.11964e-16
+level 0 count 21 tpre 0.01 tcoarse 3.38 tpost 1.99 trest 1.46 tprol 1.40
+level 1 count 40 tpre 0.00 tcoarse 0.10 tpost 0.32 trest 0.00 tprol 0.00
+iters =   21  secs = 6.172880  rsq = 1.85743e-16
+level 0 count 21 tpre 0.01 tcoarse 3.39 tpost 1.99 trest 1.46 tprol 1.40
+level 1 count 41 tpre 0.00 tcoarse 0.10 tpost 0.32 trest 0.00 tprol 0.00
+iters =   21  secs = 6.175219  rsq = 2.05056e-16
+level 0 count 21 tpre 0.01 tcoarse 3.40 tpost 1.99 trest 1.47 tprol 1.40
+level 1 count 40 tpre 0.00 tcoarse 0.10 tpost 0.32 trest 0.00 tprol 0.00
+iters =   20  secs = 5.873161  rsq = 9.59824e-16
+level 0 count 20 tpre 0.01 tcoarse 3.23 tpost 1.89 trest 1.40 tprol 1.33
+level 1 count 38 tpre 0.00 tcoarse 0.09 tpost 0.30 trest 0.00 tprol 0.00
+iters =   21  secs = 6.155429  rsq = 2.27766e-16
+level 0 count 21 tpre 0.01 tcoarse 3.38 tpost 1.99 trest 1.47 tprol 1.40
+level 1 count 40 tpre 0.00 tcoarse 0.09 tpost 0.32 trest 0.00 tprol 0.00
+iters =   21  secs = 6.132816  rsq = 2.44188e-16
+level 0 count 21 tpre 0.01 tcoarse 3.35 tpost 1.99 trest 1.46 tprol 1.40
+level 1 count 38 tpre 0.00 tcoarse 0.09 tpost 0.30 trest 0.00 tprol 0.00
+iters =   20  secs = 5.850335  rsq = 9.75275e-16
+level 0 count 20 tpre 0.01 tcoarse 3.20 tpost 1.89 trest 1.39 tprol 1.33
+level 1 count 38 tpre 0.00 tcoarse 0.09 tpost 0.30 trest 0.00 tprol 0.00
+iters =   20  secs = 5.983592  rsq = 9.52048e-16
+level 0 count 20 tpre 0.01 tcoarse 3.34 tpost 1.89 trest 1.39 tprol 1.47
+level 1 count 38 tpre 0.00 tcoarse 0.08 tpost 0.30 trest 0.00 tprol 0.00
+iters =   21  secs = 6.163911  rsq = 1.91759e-16
+level 0 count 21 tpre 0.01 tcoarse 3.38 tpost 1.99 trest 1.47 tprol 1.40
+level 1 count 40 tpre 0.00 tcoarse 0.09 tpost 0.32 trest 0.00 tprol 0.00
+iters =   21  secs = 6.173600  rsq = 1.94009e-16
+level 0 count 21 tpre 0.01 tcoarse 3.39 tpost 1.99 trest 1.48 tprol 1.40
+level 1 count 40 tpre 0.00 tcoarse 0.09 tpost 0.32 trest 0.00 tprol 0.00
+TIME("smear[cpu]","done") = 8.944 secs
+TIME("frw_prop.1792.x0y8z0t0","done") = 82.904 secs
+TIME("fwd_prop-write","done") = 6.272 secs
+TIME("sm_fwd_prop-write","done") = 6.218 secs
+doing sink momentum 0 0 0 0
+The sink time is 10
+computing (1-g4) projected prop
+TIME("c3pt","bwd_source") = 0.393 secs
+TIME("smear[cpu]","done") = 1.253 secs
+iters =   21  secs = 6.184581  rsq = 2.60005e-16
+level 0 count 21 tpre 0.01 tcoarse 3.40 tpost 1.99 trest 1.46 tprol 1.40
+level 1 count 42 tpre 0.00 tcoarse 0.09 tpost 0.33 trest 0.00 tprol 0.00
+iters =   21  secs = 6.192486  rsq = 2.30206e-16
+level 0 count 21 tpre 0.01 tcoarse 3.41 tpost 1.99 trest 1.47 tprol 1.41
+level 1 count 42 tpre 0.00 tcoarse 0.10 tpost 0.33 trest 0.00 tprol 0.00
+iters =   21  secs = 6.204843  rsq = 2.64323e-16
+level 0 count 21 tpre 0.01 tcoarse 3.41 tpost 2.00 trest 1.46 tprol 1.41
+level 1 count 42 tpre 0.00 tcoarse 0.10 tpost 0.33 trest 0.00 tprol 0.00
+iters =   21  secs = 6.178182  rsq = 2.3139e-16
+level 0 count 21 tpre 0.01 tcoarse 3.40 tpost 1.99 trest 1.46 tprol 1.40
+level 1 count 42 tpre 0.00 tcoarse 0.09 tpost 0.33 trest 0.00 tprol 0.00
+iters =   21  secs = 6.180187  rsq = 2.34821e-16
+level 0 count 21 tpre 0.01 tcoarse 3.40 tpost 1.99 trest 1.46 tprol 1.40
+level 1 count 42 tpre 0.00 tcoarse 0.09 tpost 0.33 trest 0.00 tprol 0.00
+iters =   21  secs = 6.167838  rsq = 2.75464e-16
+level 0 count 21 tpre 0.01 tcoarse 3.39 tpost 1.99 trest 1.47 tprol 1.40
+level 1 count 40 tpre 0.00 tcoarse 0.10 tpost 0.32 trest 0.00 tprol 0.00
+TIME("c3pt","bwd_prop") = 39.439 secs
+TIME("seq_prop-write","done") = 6.497 secs
+TIME("smear[cpu]","done") = 8.976 secs
+seq check: complex(1.04403e-09, 5.99867e-10)
+doing sink momentum 0 0 0 0
+The sink time is 10
+computing (1-g4) projected prop
+TIME("c3pt","bwd_source") = 0.446 secs
+TIME("smear[cpu]","done") = 1.255 secs
+iters =   21  secs = 6.193712  rsq = 2.60005e-16
+level 0 count 21 tpre 0.01 tcoarse 3.41 tpost 1.99 trest 1.47 tprol 1.40
+level 1 count 42 tpre 0.00 tcoarse 0.09 tpost 0.34 trest 0.00 tprol 0.00
+iters =   21  secs = 6.186461  rsq = 2.61142e-16
+level 0 count 21 tpre 0.01 tcoarse 3.40 tpost 1.99 trest 1.47 tprol 1.40
+level 1 count 41 tpre 0.00 tcoarse 0.10 tpost 0.33 trest 0.00 tprol 0.00
+iters =   21  secs = 6.200810  rsq = 2.64323e-16
+level 0 count 21 tpre 0.01 tcoarse 3.42 tpost 1.99 trest 1.46 tprol 1.40
+level 1 count 42 tpre 0.00 tcoarse 0.10 tpost 0.34 trest 0.00 tprol 0.00
+iters =   21  secs = 6.188805  rsq = 2.3779e-16
+level 0 count 21 tpre 0.01 tcoarse 3.41 tpost 1.99 trest 1.47 tprol 1.41
+level 1 count 41 tpre 0.00 tcoarse 0.09 tpost 0.33 trest 0.00 tprol 0.00
+iters =   21  secs = 6.281657  rsq = 2.34821e-16
+level 0 count 21 tpre 0.01 tcoarse 3.50 tpost 1.99 trest 1.47 tprol 1.49
+level 1 count 42 tpre 0.00 tcoarse 0.09 tpost 0.34 trest 0.00 tprol 0.00
+iters =   21  secs = 6.265908  rsq = 2.38876e-16
+level 0 count 21 tpre 0.01 tcoarse 3.48 tpost 1.99 trest 1.47 tprol 1.48
+level 1 count 41 tpre 0.00 tcoarse 0.10 tpost 0.33 trest 0.00 tprol 0.00
+TIME("c3pt","bwd_prop") = 39.697 secs
+TIME("seq_prop-write","done") = 6.886 secs
+TIME("smear[cpu]","done") = 8.962 secs
+seq check: complex(2.08805e-09, 1.19973e-09)
+TIME("smear[cpu]","done") = 0.083 secs
+TIME("frw_prop_source.1792.x0y16z0t0","done") = 0.117 secs
+iters =   20  secs = 5.874774  rsq = 9.00972e-16
+level 0 count 20 tpre 0.01 tcoarse 3.23 tpost 1.89 trest 1.40 tprol 1.33
+level 1 count 38 tpre 0.00 tcoarse 0.09 tpost 0.31 trest 0.00 tprol 0.00
+iters =   21  secs = 6.167251  rsq = 2.05735e-16
+level 0 count 21 tpre 0.01 tcoarse 3.39 tpost 1.99 trest 1.46 tprol 1.40
+level 1 count 40 tpre 0.00 tcoarse 0.09 tpost 0.32 trest 0.00 tprol 0.00
+iters =   20  secs = 5.881367  rsq = 8.3403e-16
+level 0 count 20 tpre 0.01 tcoarse 3.23 tpost 1.89 trest 1.40 tprol 1.34
+level 1 count 38 tpre 0.00 tcoarse 0.08 tpost 0.31 trest 0.00 tprol 0.00
+iters =   21  secs = 6.165226  rsq = 2.1001e-16
+level 0 count 21 tpre 0.01 tcoarse 3.38 tpost 1.99 trest 1.47 tprol 1.40
+level 1 count 39 tpre 0.00 tcoarse 0.09 tpost 0.31 trest 0.00 tprol 0.00
+iters =   21  secs = 6.179452  rsq = 1.93975e-16
+level 0 count 21 tpre 0.01 tcoarse 3.40 tpost 1.99 trest 1.47 tprol 1.40
+level 1 count 40 tpre 0.00 tcoarse 0.09 tpost 0.33 trest 0.00 tprol 0.00
+iters =   21  secs = 6.170053  rsq = 1.9115e-16
+level 0 count 21 tpre 0.01 tcoarse 3.39 tpost 1.99 trest 1.47 tprol 1.40
+level 1 count 40 tpre 0.00 tcoarse 0.09 tpost 0.32 trest 0.00 tprol 0.00
+iters =   21  secs = 6.184783  rsq = 2.17847e-16
+level 0 count 21 tpre 0.01 tcoarse 3.40 tpost 1.99 trest 1.47 tprol 1.40
+level 1 count 41 tpre 0.00 tcoarse 0.10 tpost 0.33 trest 0.00 tprol 0.00
+iters =   21  secs = 6.175752  rsq = 2.35907e-16
+level 0 count 21 tpre 0.01 tcoarse 3.39 tpost 1.99 trest 1.47 tprol 1.40
+level 1 count 40 tpre 0.00 tcoarse 0.09 tpost 0.32 trest 0.00 tprol 0.00
+iters =   21  secs = 6.171832  rsq = 1.97053e-16
+level 0 count 21 tpre 0.01 tcoarse 3.39 tpost 1.99 trest 1.47 tprol 1.40
+level 1 count 40 tpre 0.00 tcoarse 0.09 tpost 0.32 trest 0.00 tprol 0.00
+iters =   21  secs = 6.164742  rsq = 2.16799e-16
+level 0 count 21 tpre 0.01 tcoarse 3.38 tpost 1.99 trest 1.47 tprol 1.40
+level 1 count 39 tpre 0.00 tcoarse 0.09 tpost 0.31 trest 0.00 tprol 0.00
+iters =   21  secs = 6.191014  rsq = 1.8332e-16
+level 0 count 21 tpre 0.01 tcoarse 3.41 tpost 1.99 trest 1.47 tprol 1.40
+level 1 count 41 tpre 0.00 tcoarse 0.10 tpost 0.33 trest 0.00 tprol 0.00
+iters =   21  secs = 6.172170  rsq = 2.12149e-16
+level 0 count 21 tpre 0.01 tcoarse 3.39 tpost 1.99 trest 1.47 tprol 1.40
+level 1 count 40 tpre 0.00 tcoarse 0.09 tpost 0.32 trest 0.00 tprol 0.00
+TIME("smear[cpu]","done") = 8.989 secs
+TIME("frw_prop.1792.x0y16z0t0","done") = 83.813 secs
+TIME("fwd_prop-write","done") = 6.876 secs
+TIME("sm_fwd_prop-write","done") = 13.842 secs
+doing sink momentum 0 0 0 0
+The sink time is 10
+computing (1-g4) projected prop
+TIME("c3pt","bwd_source") = 0.400 secs
+TIME("smear[cpu]","done") = 1.254 secs
+iters =   21  secs = 6.175475  rsq = 2.41539e-16
+level 0 count 21 tpre 0.01 tcoarse 3.39 tpost 1.99 trest 1.46 tprol 1.40
+level 1 count 42 tpre 0.00 tcoarse 0.09 tpost 0.33 trest 0.00 tprol 0.00
+iters =   21  secs = 6.180248  rsq = 2.1506e-16
+level 0 count 21 tpre 0.01 tcoarse 3.39 tpost 1.99 trest 1.46 tprol 1.40
+level 1 count 42 tpre 0.00 tcoarse 0.10 tpost 0.33 trest 0.00 tprol 0.00
+iters =   21  secs = 6.173751  rsq = 2.29452e-16
+level 0 count 21 tpre 0.01 tcoarse 3.39 tpost 1.99 trest 1.46 tprol 1.40
+level 1 count 42 tpre 0.00 tcoarse 0.10 tpost 0.33 trest 0.00 tprol 0.00
+iters =   21  secs = 6.156416  rsq = 2.6507e-16
+level 0 count 21 tpre 0.01 tcoarse 3.38 tpost 1.99 trest 1.46 tprol 1.40
+level 1 count 41 tpre 0.00 tcoarse 0.09 tpost 0.32 trest 0.00 tprol 0.00
+iters =   21  secs = 6.168471  rsq = 2.00964e-16
+level 0 count 21 tpre 0.01 tcoarse 3.39 tpost 1.99 trest 1.46 tprol 1.40
+level 1 count 42 tpre 0.00 tcoarse 0.09 tpost 0.33 trest 0.00 tprol 0.00
+iters =   21  secs = 6.183937  rsq = 2.8826e-16
+level 0 count 21 tpre 0.01 tcoarse 3.40 tpost 1.99 trest 1.47 tprol 1.41
+level 1 count 42 tpre 0.00 tcoarse 0.09 tpost 0.33 trest 0.00 tprol 0.00
+TIME("c3pt","bwd_prop") = 39.368 secs
+TIME("seq_prop-write","done") = 6.115 secs
+TIME("smear[cpu]","done") = 8.956 secs
+seq check: complex(7.60808e-10, 4.61967e-10)
+doing sink momentum 0 0 0 0
+The sink time is 10
+computing (1-g4) projected prop
+TIME("c3pt","bwd_source") = 0.439 secs
+TIME("smear[cpu]","done") = 1.259 secs
+iters =   21  secs = 6.183948  rsq = 2.41539e-16
+level 0 count 21 tpre 0.01 tcoarse 3.40 tpost 1.99 trest 1.46 tprol 1.41
+level 1 count 42 tpre 0.00 tcoarse 0.09 tpost 0.33 trest 0.00 tprol 0.00
+iters =   21  secs = 6.172460  rsq = 2.63758e-16
+level 0 count 21 tpre 0.01 tcoarse 3.39 tpost 1.99 trest 1.46 tprol 1.41
+level 1 count 41 tpre 0.00 tcoarse 0.09 tpost 0.32 trest 0.00 tprol 0.00
+iters =   21  secs = 6.187482  rsq = 2.29452e-16
+level 0 count 21 tpre 0.01 tcoarse 3.40 tpost 1.99 trest 1.46 tprol 1.40
+level 1 count 42 tpre 0.00 tcoarse 0.10 tpost 0.33 trest 0.00 tprol 0.00
+iters =   21  secs = 6.172063  rsq = 2.98072e-16
+level 0 count 21 tpre 0.01 tcoarse 3.39 tpost 1.99 trest 1.46 tprol 1.41
+level 1 count 41 tpre 0.00 tcoarse 0.09 tpost 0.32 trest 0.00 tprol 0.00
+iters =   21  secs = 6.183191  rsq = 2.00964e-16
+level 0 count 21 tpre 0.01 tcoarse 3.40 tpost 1.99 trest 1.46 tprol 1.40
+level 1 count 42 tpre 0.00 tcoarse 0.09 tpost 0.33 trest 0.00 tprol 0.00
+iters =   21  secs = 6.178463  rsq = 2.89046e-16
+level 0 count 21 tpre 0.01 tcoarse 3.40 tpost 1.99 trest 1.47 tprol 1.40
+level 1 count 41 tpre 0.00 tcoarse 0.09 tpost 0.32 trest 0.00 tprol 0.00
+TIME("c3pt","bwd_prop") = 39.462 secs
+TIME("seq_prop-write","done") = 6.324 secs
+TIME("smear[cpu]","done") = 8.947 secs
+seq check: complex(1.52162e-09, 9.23935e-10)
+TIME("smear[cpu]","done") = 0.083 secs
+TIME("frw_prop_source.1792.x0y24z0t0","done") = 0.116 secs
+iters =   20  secs = 5.881721  rsq = 9.9185e-16
+level 0 count 20 tpre 0.01 tcoarse 3.21 tpost 1.92 trest 1.39 tprol 1.34
+level 1 count 37 tpre 0.00 tcoarse 0.09 tpost 0.29 trest 0.00 tprol 0.00
+iters =   21  secs = 6.155795  rsq = 2.05115e-16
+level 0 count 21 tpre 0.01 tcoarse 3.36 tpost 2.00 trest 1.46 tprol 1.40
+level 1 count 38 tpre 0.00 tcoarse 0.09 tpost 0.30 trest 0.00 tprol 0.00
+iters =   21  secs = 6.135040  rsq = 2.55618e-16
+level 0 count 21 tpre 0.01 tcoarse 3.35 tpost 1.99 trest 1.46 tprol 1.40
+level 1 count 38 tpre 0.00 tcoarse 0.09 tpost 0.30 trest 0.00 tprol 0.00
+iters =   21  secs = 6.153631  rsq = 2.46965e-16
+level 0 count 21 tpre 0.01 tcoarse 3.35 tpost 2.01 trest 1.46 tprol 1.40
+level 1 count 38 tpre 0.00 tcoarse 0.09 tpost 0.30 trest 0.00 tprol 0.00
+iters =   21  secs = 6.133077  rsq = 2.09184e-16
+level 0 count 21 tpre 0.01 tcoarse 3.35 tpost 1.99 trest 1.46 tprol 1.39
+level 1 count 38 tpre 0.00 tcoarse 0.09 tpost 0.30 trest 0.00 tprol 0.00
+iters =   21  secs = 6.155059  rsq = 1.81808e-16
+level 0 count 21 tpre 0.01 tcoarse 3.37 tpost 1.99 trest 1.46 tprol 1.40
+level 1 count 40 tpre 0.00 tcoarse 0.09 tpost 0.32 trest 0.00 tprol 0.00
+iters =   21  secs = 6.170083  rsq = 2.10371e-16
+level 0 count 21 tpre 0.01 tcoarse 3.39 tpost 1.99 trest 1.46 tprol 1.40
+level 1 count 41 tpre 0.00 tcoarse 0.09 tpost 0.32 trest 0.00 tprol 0.00
+iters =   21  secs = 6.153567  rsq = 2.72659e-16
+level 0 count 21 tpre 0.01 tcoarse 3.37 tpost 1.99 trest 1.47 tprol 1.40
+level 1 count 39 tpre 0.00 tcoarse 0.09 tpost 0.31 trest 0.00 tprol 0.00
+iters =   20  secs = 5.864051  rsq = 9.43039e-16
+level 0 count 20 tpre 0.01 tcoarse 3.22 tpost 1.89 trest 1.40 tprol 1.33
+level 1 count 38 tpre 0.00 tcoarse 0.09 tpost 0.30 trest 0.00 tprol 0.00
+iters =   20  secs = 5.877113  rsq = 9.97818e-16
+level 0 count 20 tpre 0.01 tcoarse 3.23 tpost 1.89 trest 1.40 tprol 1.33
+level 1 count 39 tpre 0.00 tcoarse 0.09 tpost 0.31 trest 0.00 tprol 0.00
+iters =   20  secs = 5.878410  rsq = 8.94528e-16
+level 0 count 20 tpre 0.01 tcoarse 3.23 tpost 1.89 trest 1.40 tprol 1.33
+level 1 count 39 tpre 0.00 tcoarse 0.09 tpost 0.31 trest 0.00 tprol 0.00
+iters =   21  secs = 6.170357  rsq = 2.01015e-16
+level 0 count 21 tpre 0.01 tcoarse 3.39 tpost 1.99 trest 1.47 tprol 1.40
+level 1 count 41 tpre 0.00 tcoarse 0.09 tpost 0.32 trest 0.00 tprol 0.00
+TIME("smear[cpu]","done") = 8.961 secs
+TIME("frw_prop.1792.x0y24z0t0","done") = 83.034 secs
+TIME("fwd_prop-write","done") = 8.125 secs
+TIME("sm_fwd_prop-write","done") = 13.049 secs
+doing sink momentum 0 0 0 0
+The sink time is 10
+computing (1-g4) projected prop
+TIME("c3pt","bwd_source") = 0.400 secs
+TIME("smear[cpu]","done") = 1.256 secs
+iters =   21  secs = 6.174065  rsq = 2.54909e-16
+level 0 count 21 tpre 0.01 tcoarse 3.39 tpost 1.99 trest 1.46 tprol 1.40
+level 1 count 41 tpre 0.00 tcoarse 0.09 tpost 0.33 trest 0.00 tprol 0.00
+iters =   21  secs = 6.191937  rsq = 2.53445e-16
+level 0 count 21 tpre 0.01 tcoarse 3.41 tpost 1.99 trest 1.46 tprol 1.41
+level 1 count 42 tpre 0.00 tcoarse 0.09 tpost 0.33 trest 0.00 tprol 0.00
+iters =   21  secs = 6.163735  rsq = 2.67147e-16
+level 0 count 21 tpre 0.01 tcoarse 3.38 tpost 1.99 trest 1.46 tprol 1.40
+level 1 count 40 tpre 0.00 tcoarse 0.09 tpost 0.32 trest 0.00 tprol 0.00
+iters =   21  secs = 6.174209  rsq = 3.075e-16
+level 0 count 21 tpre 0.01 tcoarse 3.39 tpost 1.99 trest 1.46 tprol 1.40
+level 1 count 41 tpre 0.00 tcoarse 0.09 tpost 0.32 trest 0.00 tprol 0.00
+iters =   21  secs = 6.190155  rsq = 2.35679e-16
+level 0 count 21 tpre 0.01 tcoarse 3.41 tpost 1.99 trest 1.46 tprol 1.40
+level 1 count 42 tpre 0.00 tcoarse 0.10 tpost 0.33 trest 0.00 tprol 0.00
+iters =   21  secs = 6.180137  rsq = 2.2706e-16
+level 0 count 21 tpre 0.01 tcoarse 3.40 tpost 1.99 trest 1.46 tprol 1.40
+level 1 count 42 tpre 0.00 tcoarse 0.09 tpost 0.33 trest 0.00 tprol 0.00
+TIME("c3pt","bwd_prop") = 39.404 secs
+TIME("seq_prop-write","done") = 7.643 secs
+TIME("smear[cpu]","done") = 8.982 secs
+seq check: complex(2.93805e-10, 5.83195e-10)
+doing sink momentum 0 0 0 0
+The sink time is 10
+computing (1-g4) projected prop
+TIME("c3pt","bwd_source") = 0.446 secs
+TIME("smear[cpu]","done") = 1.253 secs
+iters =   21  secs = 6.196233  rsq = 2.54908e-16
+level 0 count 21 tpre 0.01 tcoarse 3.40 tpost 2.01 trest 1.47 tprol 1.41
+level 1 count 41 tpre 0.00 tcoarse 0.09 tpost 0.32 trest 0.00 tprol 0.00
+iters =   21  secs = 6.186667  rsq = 2.67842e-16
+level 0 count 21 tpre 0.01 tcoarse 3.41 tpost 1.99 trest 1.47 tprol 1.42
+level 1 count 41 tpre 0.00 tcoarse 0.09 tpost 0.32 trest 0.00 tprol 0.00
+iters =   21  secs = 6.170022  rsq = 2.67147e-16
+level 0 count 21 tpre 0.01 tcoarse 3.39 tpost 1.99 trest 1.46 tprol 1.41
+level 1 count 40 tpre 0.00 tcoarse 0.09 tpost 0.32 trest 0.00 tprol 0.00
+iters =   21  secs = 6.162905  rsq = 2.78494e-16
+level 0 count 21 tpre 0.01 tcoarse 3.38 tpost 1.99 trest 1.46 tprol 1.40
+level 1 count 40 tpre 0.00 tcoarse 0.09 tpost 0.32 trest 0.00 tprol 0.00
+iters =   21  secs = 6.192291  rsq = 2.35679e-16
+level 0 count 21 tpre 0.01 tcoarse 3.41 tpost 1.99 trest 1.47 tprol 1.41
+level 1 count 42 tpre 0.00 tcoarse 0.10 tpost 0.33 trest 0.00 tprol 0.00
+iters =   21  secs = 6.162807  rsq = 3.15471e-16
+level 0 count 21 tpre 0.01 tcoarse 3.38 tpost 1.99 trest 1.47 tprol 1.40
+level 1 count 40 tpre 0.00 tcoarse 0.09 tpost 0.32 trest 0.00 tprol 0.00
+TIME("c3pt","bwd_prop") = 39.445 secs
+TIME("seq_prop-write","done") = 9.233 secs
+TIME("smear[cpu]","done") = 8.955 secs
+seq check: complex(5.8761e-10, 1.16639e-09)
+TIME("smear[cpu]","done") = 0.084 secs
+TIME("frw_prop_source.1792.x0y0z8t0","done") = 0.119 secs
+iters =   21  secs = 6.174136  rsq = 2.83321e-16
+level 0 count 21 tpre 0.01 tcoarse 3.38 tpost 2.00 trest 1.46 tprol 1.40
+level 1 count 39 tpre 0.00 tcoarse 0.09 tpost 0.31 trest 0.00 tprol 0.00
+iters =   20  secs = 5.876724  rsq = 9.97102e-16
+level 0 count 20 tpre 0.01 tcoarse 3.23 tpost 1.89 trest 1.39 tprol 1.34
+level 1 count 38 tpre 0.00 tcoarse 0.09 tpost 0.31 trest 0.00 tprol 0.00
+iters =   21  secs = 6.173044  rsq = 2.04223e-16
+level 0 count 21 tpre 0.01 tcoarse 3.39 tpost 1.99 trest 1.46 tprol 1.40
+level 1 count 40 tpre 0.00 tcoarse 0.10 tpost 0.32 trest 0.00 tprol 0.00
+iters =   21  secs = 6.189197  rsq = 1.84042e-16
+level 0 count 21 tpre 0.01 tcoarse 3.40 tpost 2.00 trest 1.46 tprol 1.40
+level 1 count 41 tpre 0.00 tcoarse 0.09 tpost 0.33 trest 0.00 tprol 0.00
+iters =   21  secs = 6.169034  rsq = 1.82837e-16
+level 0 count 21 tpre 0.01 tcoarse 3.39 tpost 1.99 trest 1.46 tprol 1.40
+level 1 count 40 tpre 0.00 tcoarse 0.10 tpost 0.32 trest 0.00 tprol 0.00
+iters =   21  secs = 6.165525  rsq = 1.93008e-16
+level 0 count 21 tpre 0.01 tcoarse 3.38 tpost 1.99 trest 1.47 tprol 1.40
+level 1 count 39 tpre 0.00 tcoarse 0.09 tpost 0.31 trest 0.00 tprol 0.00
+iters =   21  secs = 6.166821  rsq = 1.90746e-16
+level 0 count 21 tpre 0.01 tcoarse 3.38 tpost 1.99 trest 1.46 tprol 1.40
+level 1 count 40 tpre 0.00 tcoarse 0.09 tpost 0.32 trest 0.00 tprol 0.00
+iters =   21  secs = 6.173788  rsq = 1.98942e-16
+level 0 count 21 tpre 0.01 tcoarse 3.39 tpost 1.99 trest 1.46 tprol 1.40
+level 1 count 40 tpre 0.00 tcoarse 0.09 tpost 0.32 trest 0.00 tprol 0.00
+iters =   21  secs = 6.173599  rsq = 2.26735e-16
+level 0 count 21 tpre 0.01 tcoarse 3.39 tpost 1.99 trest 1.47 tprol 1.40
+level 1 count 39 tpre 0.00 tcoarse 0.09 tpost 0.32 trest 0.00 tprol 0.00
+iters =   21  secs = 6.146862  rsq = 2.67542e-16
+level 0 count 21 tpre 0.01 tcoarse 3.37 tpost 1.99 trest 1.46 tprol 1.40
+level 1 count 38 tpre 0.00 tcoarse 0.09 tpost 0.31 trest 0.00 tprol 0.00
+iters =   20  secs = 5.891184  rsq = 9.42285e-16
+level 0 count 20 tpre 0.01 tcoarse 3.24 tpost 1.89 trest 1.39 tprol 1.34
+level 1 count 38 tpre 0.00 tcoarse 0.09 tpost 0.32 trest 0.00 tprol 0.00
+iters =   21  secs = 6.160765  rsq = 2.19978e-16
+level 0 count 21 tpre 0.01 tcoarse 3.38 tpost 1.99 trest 1.46 tprol 1.41
+level 1 count 39 tpre 0.00 tcoarse 0.08 tpost 0.32 trest 0.00 tprol 0.00
+TIME("smear[cpu]","done") = 8.972 secs
+TIME("frw_prop.1792.x0y0z8t0","done") = 83.768 secs
+TIME("fwd_prop-write","done") = 7.362 secs
+TIME("sm_fwd_prop-write","done") = 7.202 secs
+doing sink momentum 0 0 0 0
+The sink time is 10
+computing (1-g4) projected prop
+TIME("c3pt","bwd_source") = 0.399 secs
+TIME("smear[cpu]","done") = 1.254 secs
+iters =   21  secs = 6.190120  rsq = 2.46616e-16
+level 0 count 21 tpre 0.01 tcoarse 3.40 tpost 2.00 trest 1.46 tprol 1.40
+level 1 count 41 tpre 0.00 tcoarse 0.09 tpost 0.33 trest 0.00 tprol 0.00
+iters =   21  secs = 6.204779  rsq = 2.81274e-16
+level 0 count 21 tpre 0.01 tcoarse 3.43 tpost 1.99 trest 1.46 tprol 1.40
+level 1 count 42 tpre 0.00 tcoarse 0.10 tpost 0.35 trest 0.00 tprol 0.00
+iters =   21  secs = 6.184852  rsq = 2.56081e-16
+level 0 count 21 tpre 0.01 tcoarse 3.40 tpost 1.99 trest 1.46 tprol 1.40
+level 1 count 41 tpre 0.00 tcoarse 0.10 tpost 0.33 trest 0.00 tprol 0.00
+iters =   21  secs = 6.174614  rsq = 2.97536e-16
+level 0 count 21 tpre 0.01 tcoarse 3.39 tpost 1.99 trest 1.46 tprol 1.40
+level 1 count 40 tpre 0.00 tcoarse 0.09 tpost 0.33 trest 0.00 tprol 0.00
+iters =   21  secs = 6.193532  rsq = 2.46871e-16
+level 0 count 21 tpre 0.01 tcoarse 3.41 tpost 1.99 trest 1.46 tprol 1.40
+level 1 count 42 tpre 0.00 tcoarse 0.10 tpost 0.34 trest 0.00 tprol 0.00
+iters =   21  secs = 6.188607  rsq = 2.09917e-16
+level 0 count 21 tpre 0.01 tcoarse 3.41 tpost 1.99 trest 1.46 tprol 1.40
+level 1 count 42 tpre 0.00 tcoarse 0.10 tpost 0.34 trest 0.00 tprol 0.00
+TIME("c3pt","bwd_prop") = 39.465 secs
+TIME("seq_prop-write","done") = 6.402 secs
+TIME("smear[cpu]","done") = 8.968 secs
+seq check: complex(1.82441e-10, 4.32154e-11)
+doing sink momentum 0 0 0 0
+The sink time is 10
+computing (1-g4) projected prop
+TIME("c3pt","bwd_source") = 0.444 secs
+TIME("smear[cpu]","done") = 1.253 secs
+iters =   21  secs = 6.170813  rsq = 2.46616e-16
+level 0 count 21 tpre 0.01 tcoarse 3.39 tpost 1.99 trest 1.46 tprol 1.40
+level 1 count 41 tpre 0.00 tcoarse 0.09 tpost 0.33 trest 0.00 tprol 0.00
+iters =   21  secs = 6.177409  rsq = 2.4002e-16
+level 0 count 21 tpre 0.01 tcoarse 3.39 tpost 1.99 trest 1.46 tprol 1.40
+level 1 count 41 tpre 0.00 tcoarse 0.09 tpost 0.33 trest 0.00 tprol 0.00
+iters =   21  secs = 6.183214  rsq = 2.56081e-16
+level 0 count 21 tpre 0.01 tcoarse 3.40 tpost 1.99 trest 1.46 tprol 1.40
+level 1 count 41 tpre 0.00 tcoarse 0.10 tpost 0.33 trest 0.00 tprol 0.00
+iters =   21  secs = 6.178157  rsq = 1.92589e-16
+level 0 count 21 tpre 0.01 tcoarse 3.39 tpost 1.99 trest 1.46 tprol 1.40
+level 1 count 41 tpre 0.00 tcoarse 0.10 tpost 0.33 trest 0.00 tprol 0.00
+iters =   21  secs = 6.190802  rsq = 2.46871e-16
+level 0 count 21 tpre 0.01 tcoarse 3.41 tpost 1.99 trest 1.46 tprol 1.40
+level 1 count 42 tpre 0.00 tcoarse 0.10 tpost 0.33 trest 0.00 tprol 0.00
+iters =   21  secs = 6.175047  rsq = 2.4911e-16
+level 0 count 21 tpre 0.01 tcoarse 3.39 tpost 1.99 trest 1.47 tprol 1.40
+level 1 count 40 tpre 0.00 tcoarse 0.09 tpost 0.32 trest 0.00 tprol 0.00
+TIME("c3pt","bwd_prop") = 39.452 secs
+TIME("seq_prop-write","done") = 6.824 secs
+TIME("smear[cpu]","done") = 8.949 secs
+seq check: complex(3.64882e-10, 8.64309e-11)
+TIME("smear[cpu]","done") = 0.083 secs
+TIME("frw_prop_source.1792.x0y0z16t0","done") = 0.117 secs
+iters =   21  secs = 6.160286  rsq = 2.06545e-16
+level 0 count 21 tpre 0.01 tcoarse 3.38 tpost 1.99 trest 1.46 tprol 1.40
+level 1 count 41 tpre 0.00 tcoarse 0.09 tpost 0.32 trest 0.00 tprol 0.00
+iters =   21  secs = 6.151648  rsq = 2.0484e-16
+level 0 count 21 tpre 0.01 tcoarse 3.36 tpost 1.99 trest 1.47 tprol 1.40
+level 1 count 39 tpre 0.00 tcoarse 0.09 tpost 0.30 trest 0.00 tprol 0.00
+iters =   21  secs = 6.172302  rsq = 1.99559e-16
+level 0 count 21 tpre 0.01 tcoarse 3.39 tpost 1.99 trest 1.47 tprol 1.41
+level 1 count 41 tpre 0.00 tcoarse 0.10 tpost 0.32 trest 0.00 tprol 0.00
+iters =   21  secs = 6.148701  rsq = 2.16548e-16
+level 0 count 21 tpre 0.01 tcoarse 3.37 tpost 1.99 trest 1.46 tprol 1.41
+level 1 count 39 tpre 0.00 tcoarse 0.09 tpost 0.30 trest 0.00 tprol 0.00
+iters =   21  secs = 6.150159  rsq = 2.27155e-16
+level 0 count 21 tpre 0.01 tcoarse 3.37 tpost 1.99 trest 1.46 tprol 1.40
+level 1 count 40 tpre 0.00 tcoarse 0.09 tpost 0.31 trest 0.00 tprol 0.00
+iters =   21  secs = 6.127254  rsq = 2.23268e-16
+level 0 count 21 tpre 0.01 tcoarse 3.35 tpost 1.99 trest 1.46 tprol 1.40
+level 1 count 38 tpre 0.00 tcoarse 0.09 tpost 0.30 trest 0.00 tprol 0.00
+iters =   21  secs = 6.129528  rsq = 1.9715e-16
+level 0 count 21 tpre 0.01 tcoarse 3.35 tpost 1.99 trest 1.46 tprol 1.40
+level 1 count 40 tpre 0.00 tcoarse 0.08 tpost 0.31 trest 0.00 tprol 0.00
+iters =   21  secs = 6.119694  rsq = 2.27745e-16
+level 0 count 21 tpre 0.01 tcoarse 3.34 tpost 1.99 trest 1.46 tprol 1.40
+level 1 count 38 tpre 0.00 tcoarse 0.09 tpost 0.30 trest 0.00 tprol 0.00
+iters =   20  secs = 5.853768  rsq = 7.82103e-16
+level 0 count 20 tpre 0.01 tcoarse 3.21 tpost 1.89 trest 1.39 tprol 1.33
+level 1 count 39 tpre 0.00 tcoarse 0.08 tpost 0.30 trest 0.00 tprol 0.00
+iters =   21  secs = 6.115653  rsq = 3.19348e-16
+level 0 count 21 tpre 0.01 tcoarse 3.34 tpost 1.99 trest 1.46 tprol 1.40
+level 1 count 38 tpre 0.00 tcoarse 0.08 tpost 0.30 trest 0.00 tprol 0.00
+iters =   20  secs = 5.840717  rsq = 8.7415e-16
+level 0 count 20 tpre 0.01 tcoarse 3.19 tpost 1.90 trest 1.39 tprol 1.33
+level 1 count 36 tpre 0.00 tcoarse 0.08 tpost 0.28 trest 0.00 tprol 0.00
+iters =   21  secs = 6.139965  rsq = 2.02274e-16
+level 0 count 21 tpre 0.01 tcoarse 3.36 tpost 1.99 trest 1.46 tprol 1.40
+level 1 count 40 tpre 0.00 tcoarse 0.09 tpost 0.31 trest 0.00 tprol 0.00
+TIME("smear[cpu]","done") = 8.984 secs
+TIME("frw_prop.1792.x0y0z16t0","done") = 83.425 secs
+TIME("fwd_prop-write","done") = 6.840 secs
+TIME("sm_fwd_prop-write","done") = 7.321 secs
+doing sink momentum 0 0 0 0
+The sink time is 10
+computing (1-g4) projected prop
+TIME("c3pt","bwd_source") = 0.391 secs
+TIME("smear[cpu]","done") = 1.255 secs
+iters =   21  secs = 6.185271  rsq = 2.33594e-16
+level 0 count 21 tpre 0.01 tcoarse 3.40 tpost 1.99 trest 1.46 tprol 1.40
+level 1 count 42 tpre 0.00 tcoarse 0.10 tpost 0.33 trest 0.00 tprol 0.00
+iters =   21  secs = 6.177425  rsq = 2.96953e-16
+level 0 count 21 tpre 0.01 tcoarse 3.39 tpost 1.99 trest 1.46 tprol 1.40
+level 1 count 42 tpre 0.00 tcoarse 0.10 tpost 0.33 trest 0.00 tprol 0.00
+iters =   21  secs = 6.173764  rsq = 2.768e-16
+level 0 count 21 tpre 0.01 tcoarse 3.39 tpost 1.99 trest 1.46 tprol 1.41
+level 1 count 41 tpre 0.00 tcoarse 0.09 tpost 0.32 trest 0.00 tprol 0.00
+iters =   21  secs = 6.188064  rsq = 2.70004e-16
+level 0 count 21 tpre 0.01 tcoarse 3.41 tpost 1.99 trest 1.46 tprol 1.41
+level 1 count 41 tpre 0.00 tcoarse 0.10 tpost 0.33 trest 0.00 tprol 0.00
+iters =   21  secs = 6.187029  rsq = 2.86552e-16
+level 0 count 21 tpre 0.01 tcoarse 3.40 tpost 1.99 trest 1.46 tprol 1.40
+level 1 count 42 tpre 0.00 tcoarse 0.10 tpost 0.33 trest 0.00 tprol 0.00
+iters =   21  secs = 6.186587  rsq = 2.83331e-16
+level 0 count 21 tpre 0.01 tcoarse 3.41 tpost 1.99 trest 1.46 tprol 1.40
+level 1 count 42 tpre 0.00 tcoarse 0.10 tpost 0.34 trest 0.00 tprol 0.00
+TIME("c3pt","bwd_prop") = 39.426 secs
+TIME("seq_prop-write","done") = 6.521 secs
+TIME("smear[cpu]","done") = 8.964 secs
+seq check: complex(3.94956e-10, -4.4156e-10)
+doing sink momentum 0 0 0 0
+The sink time is 10
+computing (1-g4) projected prop
+TIME("c3pt","bwd_source") = 0.446 secs
+TIME("smear[cpu]","done") = 1.254 secs
+iters =   21  secs = 6.195280  rsq = 2.33594e-16
+level 0 count 21 tpre 0.01 tcoarse 3.41 tpost 1.99 trest 1.46 tprol 1.41
+level 1 count 42 tpre 0.00 tcoarse 0.10 tpost 0.33 trest 0.00 tprol 0.00
+iters =   21  secs = 6.174794  rsq = 2.7541e-16
+level 0 count 21 tpre 0.01 tcoarse 3.39 tpost 1.99 trest 1.46 tprol 1.41
+level 1 count 41 tpre 0.00 tcoarse 0.09 tpost 0.33 trest 0.00 tprol 0.00
+iters =   21  secs = 6.177422  rsq = 2.768e-16
+level 0 count 21 tpre 0.01 tcoarse 3.39 tpost 1.99 trest 1.46 tprol 1.40
+level 1 count 41 tpre 0.00 tcoarse 0.09 tpost 0.33 trest 0.00 tprol 0.00
+iters =   21  secs = 6.199762  rsq = 2.85732e-16
+level 0 count 21 tpre 0.01 tcoarse 3.41 tpost 1.99 trest 1.47 tprol 1.41
+level 1 count 41 tpre 0.00 tcoarse 0.09 tpost 0.34 trest 0.00 tprol 0.00
+iters =   21  secs = 6.193368  rsq = 2.86552e-16
+level 0 count 21 tpre 0.01 tcoarse 3.41 tpost 1.99 trest 1.46 tprol 1.40
+level 1 count 42 tpre 0.00 tcoarse 0.10 tpost 0.33 trest 0.00 tprol 0.00
+iters =   21  secs = 6.225314  rsq = 2.36613e-16
+level 0 count 21 tpre 0.01 tcoarse 3.43 tpost 2.00 trest 1.47 tprol 1.42
+level 1 count 41 tpre 0.00 tcoarse 0.09 tpost 0.34 trest 0.00 tprol 0.00
+TIME("c3pt","bwd_prop") = 39.542 secs
+TIME("seq_prop-write","done") = 6.429 secs
+TIME("smear[cpu]","done") = 8.972 secs
+seq check: complex(7.89912e-10, -8.8312e-10)
+TIME("smear[cpu]","done") = 0.083 secs
+TIME("frw_prop_source.1792.x0y0z24t0","done") = 0.116 secs
+iters =   21  secs = 6.213027  rsq = 2.41176e-16
+level 0 count 21 tpre 0.01 tcoarse 3.41 tpost 2.01 trest 1.46 tprol 1.41
+level 1 count 41 tpre 0.00 tcoarse 0.10 tpost 0.33 trest 0.00 tprol 0.00
+iters =   21  secs = 6.156522  rsq = 2.47999e-16
+level 0 count 21 tpre 0.01 tcoarse 3.37 tpost 1.99 trest 1.46 tprol 1.40
+level 1 count 39 tpre 0.00 tcoarse 0.09 tpost 0.31 trest 0.00 tprol 0.00
+iters =   21  secs = 6.152866  rsq = 2.02552e-16
+level 0 count 21 tpre 0.01 tcoarse 3.37 tpost 1.99 trest 1.47 tprol 1.40
+level 1 count 38 tpre 0.00 tcoarse 0.09 tpost 0.31 trest 0.00 tprol 0.00
+iters =   21  secs = 6.156155  rsq = 1.96509e-16
+level 0 count 21 tpre 0.01 tcoarse 3.37 tpost 1.99 trest 1.46 tprol 1.40
+level 1 count 39 tpre 0.00 tcoarse 0.09 tpost 0.31 trest 0.00 tprol 0.00
+iters =   21  secs = 6.172334  rsq = 2.14627e-16
+level 0 count 21 tpre 0.01 tcoarse 3.39 tpost 1.99 trest 1.46 tprol 1.40
+level 1 count 40 tpre 0.00 tcoarse 0.10 tpost 0.32 trest 0.00 tprol 0.00
+iters =   21  secs = 6.185160  rsq = 2.05352e-16
+level 0 count 21 tpre 0.01 tcoarse 3.40 tpost 1.99 trest 1.46 tprol 1.40
+level 1 count 41 tpre 0.00 tcoarse 0.10 tpost 0.33 trest 0.00 tprol 0.00
+iters =   21  secs = 6.153605  rsq = 1.86538e-16
+level 0 count 21 tpre 0.01 tcoarse 3.37 tpost 1.99 trest 1.46 tprol 1.40
+level 1 count 39 tpre 0.00 tcoarse 0.08 tpost 0.31 trest 0.00 tprol 0.00
+iters =   21  secs = 6.168933  rsq = 2.12537e-16
+level 0 count 21 tpre 0.01 tcoarse 3.38 tpost 1.99 trest 1.47 tprol 1.40
+level 1 count 39 tpre 0.00 tcoarse 0.09 tpost 0.31 trest 0.00 tprol 0.00
+iters =   21  secs = 6.177128  rsq = 1.91376e-16
+level 0 count 21 tpre 0.01 tcoarse 3.40 tpost 1.99 trest 1.47 tprol 1.40
+level 1 count 40 tpre 0.00 tcoarse 0.10 tpost 0.32 trest 0.00 tprol 0.00
+iters =   21  secs = 6.169516  rsq = 2.46261e-16
+level 0 count 21 tpre 0.01 tcoarse 3.37 tpost 2.01 trest 1.47 tprol 1.40
+level 1 count 38 tpre 0.00 tcoarse 0.09 tpost 0.31 trest 0.00 tprol 0.00
+iters =   21  secs = 6.157850  rsq = 2.16999e-16
+level 0 count 21 tpre 0.01 tcoarse 3.38 tpost 1.99 trest 1.47 tprol 1.40
+level 1 count 39 tpre 0.00 tcoarse 0.09 tpost 0.31 trest 0.00 tprol 0.00
+iters =   20  secs = 5.872871  rsq = 9.76506e-16
+level 0 count 20 tpre 0.01 tcoarse 3.21 tpost 1.91 trest 1.39 tprol 1.33
+level 1 count 37 tpre 0.00 tcoarse 0.09 tpost 0.30 trest 0.00 tprol 0.00
+TIME("smear[cpu]","done") = 8.971 secs
+TIME("frw_prop.1792.x0y0z24t0","done") = 84.040 secs
+TIME("fwd_prop-write","done") = 6.440 secs
+TIME("sm_fwd_prop-write","done") = 7.059 secs
+doing sink momentum 0 0 0 0
+The sink time is 10
+computing (1-g4) projected prop
+TIME("c3pt","bwd_source") = 0.393 secs
+TIME("smear[cpu]","done") = 1.255 secs
+iters =   21  secs = 6.178992  rsq = 3.05821e-16
+level 0 count 21 tpre 0.01 tcoarse 3.40 tpost 1.99 trest 1.47 tprol 1.40
+level 1 count 41 tpre 0.00 tcoarse 0.10 tpost 0.32 trest 0.00 tprol 0.00
+iters =   21  secs = 6.193757  rsq = 2.42978e-16
+level 0 count 21 tpre 0.01 tcoarse 3.41 tpost 1.99 trest 1.47 tprol 1.40
+level 1 count 42 tpre 0.00 tcoarse 0.10 tpost 0.33 trest 0.00 tprol 0.00
+iters =   21  secs = 6.191933  rsq = 2.45916e-16
+level 0 count 21 tpre 0.01 tcoarse 3.41 tpost 1.99 trest 1.46 tprol 1.40
+level 1 count 42 tpre 0.00 tcoarse 0.10 tpost 0.33 trest 0.00 tprol 0.00
+iters =   21  secs = 6.183289  rsq = 2.56484e-16
+level 0 count 21 tpre 0.01 tcoarse 3.40 tpost 1.99 trest 1.47 tprol 1.40
+level 1 count 41 tpre 0.00 tcoarse 0.10 tpost 0.32 trest 0.00 tprol 0.00
+iters =   21  secs = 6.194587  rsq = 2.6448e-16
+level 0 count 21 tpre 0.01 tcoarse 3.41 tpost 1.99 trest 1.47 tprol 1.40
+level 1 count 42 tpre 0.00 tcoarse 0.10 tpost 0.33 trest 0.00 tprol 0.00
+iters =   21  secs = 6.194526  rsq = 2.06712e-16
+level 0 count 21 tpre 0.01 tcoarse 3.41 tpost 1.99 trest 1.47 tprol 1.41
+level 1 count 42 tpre 0.00 tcoarse 0.10 tpost 0.33 trest 0.00 tprol 0.00
+TIME("c3pt","bwd_prop") = 39.468 secs
+TIME("seq_prop-write","done") = 6.710 secs
+TIME("smear[cpu]","done") = 8.971 secs
+seq check: complex(1.92888e-09, -1.68826e-09)
+doing sink momentum 0 0 0 0
+The sink time is 10
+computing (1-g4) projected prop
+TIME("c3pt","bwd_source") = 0.440 secs
+TIME("smear[cpu]","done") = 1.255 secs
+iters =   21  secs = 6.197165  rsq = 3.05821e-16
+level 0 count 21 tpre 0.01 tcoarse 3.40 tpost 2.00 trest 1.47 tprol 1.41
+level 1 count 41 tpre 0.00 tcoarse 0.10 tpost 0.32 trest 0.00 tprol 0.00
+iters =   21  secs = 6.176333  rsq = 2.53281e-16
+level 0 count 21 tpre 0.01 tcoarse 3.39 tpost 1.99 trest 1.46 tprol 1.41
+level 1 count 41 tpre 0.00 tcoarse 0.09 tpost 0.32 trest 0.00 tprol 0.00
+iters =   21  secs = 6.196084  rsq = 2.45916e-16
+level 0 count 21 tpre 0.01 tcoarse 3.41 tpost 1.99 trest 1.47 tprol 1.41
+level 1 count 42 tpre 0.00 tcoarse 0.10 tpost 0.33 trest 0.00 tprol 0.00
+iters =   21  secs = 6.164809  rsq = 2.69292e-16
+level 0 count 21 tpre 0.01 tcoarse 3.38 tpost 1.99 trest 1.46 tprol 1.41
+level 1 count 40 tpre 0.00 tcoarse 0.09 tpost 0.32 trest 0.00 tprol 0.00
+iters =   21  secs = 6.198207  rsq = 2.64481e-16
+level 0 count 21 tpre 0.01 tcoarse 3.42 tpost 1.99 trest 1.47 tprol 1.41
+level 1 count 42 tpre 0.00 tcoarse 0.10 tpost 0.33 trest 0.00 tprol 0.00
+iters =   21  secs = 6.177130  rsq = 2.33944e-16
+level 0 count 21 tpre 0.01 tcoarse 3.39 tpost 1.99 trest 1.47 tprol 1.41
+level 1 count 41 tpre 0.00 tcoarse 0.09 tpost 0.32 trest 0.00 tprol 0.00
+TIME("c3pt","bwd_prop") = 39.492 secs
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+TIME("seq_prop-write","done") = 6.482 secs
+TIME("smear[cpu]","done") = 8.968 secs
+seq check: complex(3.85776e-09, -3.37652e-09)
+
+Success.
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae
+0x4c66ae 0x4c66ae
+0x4e01dc 0x4c66ae

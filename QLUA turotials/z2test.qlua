@@ -1,0 +1,71 @@
+require("stdlib")
+L = qcd.lattice{5,5}
+qcd.Nc = 1
+volume = 1
+for i = 0, #L - 1 do
+  volume = volume * L[i]
+end
+
+printf("\n")
+printf("Lattice rank=%d\n", #L)
+for i = 0, #L - 1 do
+  printf("Lattice dim[%d]=%d\n", i, L[i])
+end
+printf("\n")
+
+do
+  local r = L:Int(os.random())
+  for i = 0, #L - 1 do
+    r = r * L[i] + L:pcoord(i)
+  end
+  S = L:RandomState(os.random(), r)
+end
+
+
+
+function plaquette(U, i, j)
+  local Ui = U[j+1]:shift(i, "from_forward")
+  local Uj = U[i+1]:shift(j, "from_forward")
+  local Pij = (U[i+1] * Ui * Uj * U[j+1])
+  
+  return Pij:sum() / (volume * qcd.Nc)
+end
+
+function run_test(name, U)
+  printf("plaquette test case: %s\n", name)
+  local s = 0
+  local k = 0
+  for i in interval(0, #L-1) do
+    for j in interval(i+1,#L-1) do
+      local sij = plaquette(U, i, j)
+      printf("  plaq[%d, %d] = %20.10f\n", i, j, sij)
+      s = s + sij
+      k = k + 1
+    end
+  end
+  printf("\n")
+  printf("average plaquette %20.10f\n\n", s / k);
+end
+
+
+U = {}
+for i = 0, #L - 1 do
+  U[i+1] = S:random_Real()
+  print("U[" .. i .. "]:")
+  print(tostring(U[i+1]))
+  printf("\n")
+end
+
+printf("U=%s\n", tostring(U))
+
+print("U =", U)
+printf("\n")
+
+ for x = 0, L[0] - 1 do
+   for y = 0, L[1] - 1 do
+     printf("v[%d,%d]= %2d\n", x, y, U[{x,y}])
+   end
+ end
+
+
+run_test("gauge links are random numbers [0,1]", U)

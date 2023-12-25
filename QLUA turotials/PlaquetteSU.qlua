@@ -1,0 +1,63 @@
+require("stdlib")
+qcd.Nc = 1
+L = qcd.lattice{4,4,4,4}
+volume = 1
+for i = 0, #L - 1 do
+  volume = volume * L[i]
+end
+printf("Lattice dimensione=%d\n", #L)
+printf("qcd.Nc=%d\n",qcd.Nc)
+do
+  local r = L:Int(os.random())
+  for i = 0, #L - 1 do
+    r = r * L[i] + L:pcoord(i)
+  end
+  S = L:RandomState(os.random(), r)
+end
+
+function toSUn(L, X)
+  local Y = (X - X:adjoin()) / 2
+  return (Y - Y:trace() / qcd.Nc * L:ColorMatrix(complex(1,0))):exp()
+end
+
+
+function weak_SUn(L, S)
+  return toSUn(L, 0.2 * S:gaussian_ColorMatrix())
+end
+
+
+
+function plaquette(U, i, j)
+  local Ui = U[j+1]:shift(i, "from_forward")
+  local Uj = U[i+1]:shift(j, "from_forward")
+  local Pij = (U[i+1] * Ui * Uj:adjoin() * U[j+1]:adjoin()):trace():real()
+  local ppp = Pij:sum(L:MultiSet(L[3], L:pcoord(3))) 
+  return ppp[2]
+end
+
+
+
+function run_test(name, U)
+  printf("plaquette test case: %s\n", name)
+  local s = 0
+  local k = 0
+  for i in interval(0, #L-1) do
+    for j in interval(i+1,#L-1) do
+      local sij = plaquette(U, i, j)
+      printf(" average plaquette in plane[%d, %d] = %20.10f\n", i, j, sij)
+      s = s + sij
+      k = k + 1
+    end
+  end
+  printf("average plaquette in full lattice  %20.10f\n\n", s / k);
+end
+
+
+
+W = {}
+for i = 0, #L - 1 do
+  W[i+1] = weak_SUn(L, S)
+end
+-- run_test("weak field", W)
+
+printf(plaquette(W, 1, 2))

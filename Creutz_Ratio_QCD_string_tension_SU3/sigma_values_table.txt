@@ -1,0 +1,13 @@
+r=	t=4	t=5	t=6	t=7	t=8	t=9	t=10	t=11
+3	730.90 ± 0.13	683.37 ± 0.18	664.90 ± 0.26	656.54 ± 0.35	652.51 ± 0.46	650.94 ± 0.66	650.83 ± 1.15	650.52 ± 1.75	651.46 ± 2.49	654.79 ± 3.81	659.34 ± 6.13	659.90 ± 9.13
+4	683.46 ± 0.16	620.96 ± 0.29	593.71 ± 0.50	579.82 ± 0.86	572.62 ± 1.24	572.45 ± 2.10	573.22 ± 3.68	567.55 ± 6.12	562.85 ± 10.72	583.13 ± 17.81	627.90 ± 35.52	nan ± nan
+5	665.03 ± 0.21	593.45 ± 0.43	559.85 ± 0.78	542.35 ± 1.41	532.04 ± 2.94	528.20 ± 5.79	527.56 ± 10.07	541.72 ± 18.78	554.10 ± 41.10	744.56 ± 88.03	nan ± nan	nan ± nan
+6	656.62 ± 0.33	579.48 ± 0.75	540.52 ± 1.60	523.22 ± 3.50	507.84 ± 6.43	508.02 ± 13.59	475.90 ± 28.93	496.34 ± 76.03	nan ± nan	nan ± nan	nan ± nan	nan ± nan
+7	652.65 ± 0.46	572.31 ± 1.23	530.93 ± 3.35	510.54 ± 7.62	503.54 ± 15.54	517.93 ± 34.53	618.70 ± 74.12	nan ± nan	nan ± nan	nan ± nan	nan ± nan	nan ± nan
+8	651.24 ± 0.67	568.59 ± 2.08	527.35 ± 6.17	512.15 ± 15.32	525.97 ± 38.05	nan ± nan	nan ± nan	nan ± nan	nan ± nan	nan ± nan	nan ± nan	nan ± nan
+9	650.85 ± 1.00	565.19 ± 3.81	528.07 ± 10.36	518.98 ± 28.92	591.86 ± 75.90	nan ± nan	nan ± nan	nan ± nan	nan ± nan	nan ± nan	nan ± nan	nan ± nan
+10	650.30 ± 1.46	561.47 ± 6.10	506.85 ± 18.68	429.66 ± 71.45	nan ± nan	nan ± nan	nan ± nan	nan ± nan	nan ± nan	nan ± nan	nan ± nan	nan ± nan
+11	650.60 ± 2.35	555.29 ± 10.69	474.97 ± 36.28	nan ± nan	nan ± nan	nan ± nan	nan ± nan	nan ± nan	nan ± nan	nan ± nan	nan ± nan	nan ± nan
+12	651.46 ± 3.46	556.06 ± 18.74	463.05 ± 86.08	nan ± nan	nan ± nan	nan ± nan	nan ± nan	nan ± nan	nan ± nan	nan ± nan	nan ± nan	nan ± nan
+13	652.05 ± 5.60	573.10 ± 30.04	nan ± nan	nan ± nan	nan ± nan	nan ± nan	nan ± nan	nan ± nan	nan ± nan	nan ± nan	nan ± nan	nan ± nan
+14	647.74 ± 8.60	637.55 ± 60.40	nan ± nan	nan ± nan	nan ± nan	nan ± nan	nan ± nan	nan ± nan	nan ± nan	nan ± nan	nan ± nan	nan ± nan

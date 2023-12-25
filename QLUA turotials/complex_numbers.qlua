@@ -1,0 +1,6 @@
+require "stdlib"
+z = complex(3,4)
+y = z * complex(0,1) - 6 * math.sin(4 * math.pi / 12)
+printf("z= %g + %gi\n,y=%g + %gi\n", z:real(), z:imag(), y:real(), y:imag())
+printf("|z|=%g\n", z:abs())
+

@@ -1,0 +1,41 @@
+require("stdlib")
+qcd.Nc = 2 -- set number of colors to 2
+L = qcd.lattice{4,4}
+
+-- assign random values of +1 or -1 to the links
+for i = 0, #L-1 do
+  for d = 1, L:ndim() do
+    L[i]:get(d):set(math.random() > 0.5 and 1 or -1)
+  end
+end
+
+-- calculate plaquettes and print results
+function plaquette(U, i, j)
+  local Pij = (U[i+1] * U[j+1]:shift(i, "from_forward") * U[i+1]:shift(j, "from_backward") * U[j+1]:shift(i, "from_backward")):trace():real()
+  return Pij:sum() / (volume * qcd.Nc)
+end
+
+function run_test(name, U)
+  printf("plaquette test case: %s\n", name)
+  local s = 0
+  local k = 0
+  for i in interval(0, #L-1) do
+    for j in skip(i, interval(0, #L-1)) do
+      local sij = plaquette(U, i, j)
+      printf("  plaq[%d, %d] = %20.10f\n", i, j, sij)
+      s = s + sij
+      k = k + 1
+    end
+  end
+  printf("average plaquette %20.10f\n\n", s / k);
+end
+
+U = {}
+for i = 0, #L-1 do
+  U[i+1] = L:ColorMatrix()
+  for d = 1, L:ndim() do
+    U[i+1]:get(d):set(L[i]:get(d))
+  end
+end
+
+run_test("random links", U)

@@ -1,0 +1,13 @@
+require("stdlib")
+ L = qcd.lattice{2,3}
+ v = L:Int(0)
+ for i = 0, #L - 1 do
+   v = v * L[i] + L:pcoord(i)
+ end
+ v[{1,2}] = -1
+ printf("v=%s\n", tostring(v))
+ for x = 0, L[0] - 1 do
+   for y = 0, L[1] - 1 do
+     printf("v[%d,%d]= %2d\n", x, y, v[{x,y}])
+   end
+ end

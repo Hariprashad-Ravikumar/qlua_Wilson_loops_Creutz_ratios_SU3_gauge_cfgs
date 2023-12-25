@@ -1,0 +1,31 @@
+require("stdlib")
+L = qcd.lattice{3,3}
+volume = 1
+for i = 0, #L - 1 do
+  volume = volume * L[i]
+end
+
+
+
+v = L:Int(0)
+for i = 0, #L - 1 do
+  v = v * L[i] + L:pcoord(i)
+end
+v[{1,2}] = -1
+printf("v=%s\n", tostring(v))
+for x = 0, L[0] - 1 do
+  for y = 0, L[1] - 1 do
+    printf("v[%d,%d]= %2d\n", x, y, v[{x,y}])
+  end
+end
+
+
+function plaquette(U, i, j)
+  local Ui = U[j+1]:shift(i, "from_forward")
+  local Uj = U[i+1]:shift(j, "from_forward")
+  local Pij = (U[i+1] * Ui * Uj:adjoin() * U[j+1]:adjoin()):trace():real()
+
+  return Pij:sum() / (volume)
+end
+P = plaquette(v, 1, 2)
+printf("Plaquette = %f\n", P)

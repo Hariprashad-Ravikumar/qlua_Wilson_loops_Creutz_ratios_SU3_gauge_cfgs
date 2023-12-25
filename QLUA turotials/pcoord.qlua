@@ -1,0 +1,9 @@
+require "stdlib" 
+lx = qcd.lattice {4, 2} 
+A = lx:Real(lx:pcoord(1) + 10 * lx:pcoord(0)) 
+B = A:shift(0, "from_backward") 
+for i = 0, lx[0] - 1 do   
+   for j = 0, lx[1] - 1 do      
+      printf("[%d %d]:  %3d %3d\n", i, j, A[{i,j}], B[{i,j}])   
+   end 
+end

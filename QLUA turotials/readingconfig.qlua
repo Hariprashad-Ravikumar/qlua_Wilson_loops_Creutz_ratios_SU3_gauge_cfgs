@@ -1,0 +1,40 @@
+require "stdlib"
+require "gauge"
+
+local Lattice = qcd.lattice{32, 32, 32, 96}
+
+function load_gauge_links_nersc(file_name)
+  local U, msg;
+  U, msg = qcd.nersc.read_gauge(Lattice, file_name)
+  return U
+end
+
+
+W = load_gauge_links_nersc("/pscratch/sd/h/hari_8/cl21_32_96_b6p1_m0p2850_m0p2450_cfg_1776.lime ")
+
+function plaquette(U, i, j)
+  local Ui = U[j+1]:shift(i, "from_forward")
+  local Uj = U[i+1]:shift(j, "from_forward")
+  local Pij = (U[i+1] * Ui * Uj:adjoin() * U[j+1]:adjoin()):trace():real()
+
+  return Pij:sum() / (volume * qcd.Nc)
+end
+
+
+function run_test(name, U)
+  printf("plaquette test case: %s\n", name)
+  local s = 0
+  local k = 0
+  for i in interval(0, #L-1) do
+    for j in skip(i, interval(0, #L-1)) do
+      local sij = plaquette(U, i, j)
+      printf("  plaq[%d, %d] = %20.10f\n", i, j, sij)
+      s = s + sij
+      k = k + 1
+    end
+  end
+  printf("average plaquette %20.10f\n\n", s / k);
+end
+
+
+run_test("NERSC config", W)

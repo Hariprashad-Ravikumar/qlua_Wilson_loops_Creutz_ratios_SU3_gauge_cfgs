@@ -1,0 +1,145 @@
+require("stdlib")
+require("qcd")
+
+qcd.Nc = 3
+
+
+latsize = {32,32,32,96}
+L = qcd.lattice(latsize)
+
+
+volume = 1
+for i = 0, #L - 1 do
+  volume = volume * L[i]
+end
+
+three_volume = 1
+for i = 0, #L - 2 do
+  three_volume = three_volume * L[i]
+end
+
+function open_qdpc_read(L, name)
+  local qdp_r = qcd.qdpc.Reader(L, name)
+  return qdp_r
+end
+
+function load_qdpc_gauge(L, name)
+  local qdp_r, finfo = open_qdpc_read(L, name)
+  local gauge, rinfo = qdp_r:ColorMatrix(4)
+  qdp_r:close()
+  return gauge, finfo, rinfo
+end
+
+
+
+-- Computing plaquettes in usual way (NOT in each time slice) for test
+
+function plaquette(U, i, j)
+  local Ui = U[j+1]:shift(i, "from_forward")
+  local Uj = U[i+1]:shift(j, "from_forward")
+  local Pij = (U[i+1] * Ui * Uj:adjoin() * U[j+1]:adjoin()):trace():real()
+  return Pij:sum() / (volume * qcd.Nc)
+end
+
+
+
+-- Computing plaquettes in each time slice
+
+function wilson_1_1_time_slice(U, i, j) 
+  local Ui = U[j+1]:shift(i, "from_forward") 
+  local Uj = U[i+1]:shift(j, "from_forward") 
+  local Pij = ((U[i+1] * Ui * Uj:adjoin() * U[j+1]:adjoin()):trace():real())/(three_volume * qcd.Nc) 
+  local Pij_t_array = Pij:sum(L:MultiSet(L[3], L:pcoord(3)))            -- for each time slice
+  return Pij_t_array
+end 
+
+function wilson_2_2_time_slice(U, i, j)
+  local U_1 = U[i+1]
+  local U_2 = U[i+1]:shift(i, "from_forward")
+  local U_3 = U[j+1]:shift(i, "from_forward"):shift(i, "from_forward")
+  local U_4 = U[j+1]:shift(i, "from_forward"):shift(i, "from_forward"):shift(j, "from_forward")
+  local U_5 = (U[i+1]:shift(i, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"))
+  local U_6 = (U[i+1]:shift(j, "from_forward"):shift(j, "from_forward"))
+  local U_7 = (U[j+1]:shift(j, "from_forward"))
+  local U_8 = (U[j+1])
+  local Wij = ((U_1 * U_2 * U_3 * U_4 * U_5:adjoin() * U_6:adjoin() * U_7:adjoin() * U_8:adjoin()):trace():real())/(three_volume * qcd.Nc)
+  local Wij_t_array = Wij:sum(L:MultiSet(L[3], L:pcoord(3)))            -- for each time slice
+  return Wij_t_array
+end
+
+function wilson_3_3_time_slice(U, i, j)
+  local U_1 = U[i+1]
+  local U_2 = U[i+1]:shift(i, "from_forward")
+  local U_3 = U[i+1]:shift(i, "from_forward"):shift(i, "from_forward")
+  local U_4 = U[j+1]:shift(i, "from_forward"):shift(i, "from_forward"):shift(i, "from_forward")
+  local U_5 = U[j+1]:shift(i, "from_forward"):shift(i, "from_forward"):shift(i, "from_forward"):shift(j, "from_forward")
+  local U_6 = U[j+1]:shift(i, "from_forward"):shift(i, "from_forward"):shift(i, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward")
+  local U_7 = (U[i+1]:shift(i, "from_forward"):shift(i, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"))
+  local U_8 = (U[i+1]:shift(i, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"))
+  local U_9 = (U[i+1]:shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"))
+  local U_10 = (U[j+1]:shift(j, "from_forward"):shift(j, "from_forward"))
+  local U_11 = (U[j+1]:shift(j, "from_forward"))
+  local U_12 = (U[j+1])
+  local Wij = ((U_1 * U_2 * U_3 * U_4 * U_5 * U_6 * U_7:adjoin() * U_8:adjoin() * U_9:adjoin() * U_10:adjoin() * U_11:adjoin() * U_12:adjoin()):trace():real())/(three_volume * qcd.Nc)
+  local Wij_t_array = Wij:sum(L:MultiSet(L[3], L:pcoord(3)))            -- for each time slice
+  return Wij_t_array
+end
+
+
+function wilson_4_4_time_slice(U, i, j)
+  local U_1 = U[i+1]
+  local U_2 = U[i+1]:shift(i, "from_forward")
+  local U_3 = U[i+1]:shift(i, "from_forward"):shift(i, "from_forward")
+  local U_4 = U[i+1]:shift(i, "from_forward"):shift(i, "from_forward"):shift(i, "from_forward")
+  local U_5 = U[j+1]:shift(i, "from_forward"):shift(i, "from_forward"):shift(i, "from_forward"):shift(i, "from_forward")
+  local U_6 = U[j+1]:shift(i, "from_forward"):shift(i, "from_forward"):shift(i, "from_forward"):shift(i, "from_forward"):shift(j, "from_forward")
+  local U_7 = U[j+1]:shift(i, "from_forward"):shift(i, "from_forward"):shift(i, "from_forward"):shift(i, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward")
+  local U_8 = U[j+1]:shift(i, "from_forward"):shift(i, "from_forward"):shift(i, "from_forward"):shift(i, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward")
+  local U_9 = U[i+1]:shift(i, "from_forward"):shift(i, "from_forward"):shift(i, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward")
+  local U_10 = U[i+1]:shift(i, "from_forward"):shift(i, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward")
+  local U_11 = U[i+1]:shift(i, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward")
+  local U_12 = U[i+1]:shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward")  
+  local U_13 = U[j+1]:shift(j, "from_forward"):shift(j, "from_forward"):shift(j, "from_forward")
+  local U_14 = U[j+1]:shift(j, "from_forward"):shift(j, "from_forward")
+  local U_15 = U[j+1]:shift(j, "from_forward")
+  local U_16 = U[j+1]
+  local Wij = ((U_1 * U_2 * U_3 * U_4 * U_5 * U_6 * U_7 * U_8 * U_9:adjoin() * U_10:adjoin() * U_11:adjoin() * U_12:adjoin() * U_13:adjoin() * U_14:adjoin() * U_15:adjoin() * U_16:adjoin()):trace():real())/(three_volume * qcd.Nc)
+  local Wij_t_array = Wij:sum(L:MultiSet(L[3], L:pcoord(3)))            -- for each time slice
+  return Wij_t_array
+end
+
+
+
+
+function run_test(U, cfg)
+  local h5_writer = qcd.hdf5.Writer("/global/homes/h/hari_8/QLUA_tutorials/wilson_loops_from_configs/wilson_loops_cfg_" .. tostring(cfg) .. "_1234_time_slices.h5")
+  for i in interval(0, 3) do
+    for j in interval(i+1, 3) do
+      local W_11_ij = wilson_1_1_time_slice(U, i, j)
+      local W_22_ij = wilson_2_2_time_slice(U, i, j)
+      local W_33_ij = wilson_3_3_time_slice(U, i, j)
+      local W_44_ij = wilson_4_4_time_slice(U, i, j)
+      local path_to_wilson_1x1 = string.format("/Wilson_loops_time_slices/wilson_1x1/ax_1%dax_2%d", i, j)
+      local write_options = { transfer = "collective", precision = "double" }
+      h5_writer:write(path_to_wilson_1x1, W_11_ij, write_options) 
+      local path_to_wilson_2x2 = string.format("/Wilson_loops_time_slices/wilson_2x2/ax_1%dax_2%d", i, j)
+      h5_writer:write(path_to_wilson_2x2, W_22_ij, write_options)
+      local path_to_wilson_3x3 = string.format("/Wilson_loops_time_slices/wilson_3x3/ax_1%dax_2%d", i, j)
+      h5_writer:write(path_to_wilson_3x3, W_33_ij, write_options)
+      local path_to_wilson_4x4 = string.format("/Wilson_loops_time_slices/wilson_4x4/ax_1%dax_2%d", i, j)
+      h5_writer:write(path_to_wilson_4x4, W_44_ij, write_options)    
+    end
+  end
+  h5_writer:close()
+  print("success : %s\n", tostring(cfg))
+end
+
+for cfg_no = 1700, 1900, 4 do
+  local cfg = cfg_no 
+  local stream = ""
+  local cfgstream = ""
+  local cfg_filename= "/pscratch/sd/e/engel/cfgs/cl21_32_96_b6p1_m0p2850_m0p2450_" .. cfgstream .. "cfg_" .. tostring(cfg) .. ".lime"
+  local U, finfo, rinfo = load_qdpc_gauge(L, cfg_filename)
+  print("starting : %s\n", tostring(cfg))
+  run_test(U, cfg)
+end

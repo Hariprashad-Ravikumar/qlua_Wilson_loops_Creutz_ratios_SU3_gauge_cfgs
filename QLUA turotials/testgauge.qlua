@@ -1,0 +1,44 @@
+require "stdlib"
+require "gauge"
+
+local file_path = "/pscratch/sd/h/hari_8/cl21_32_96_b6p1_m0p2850_m0p2450_cfg_1776.lime"
+
+-- Create a new reader instance
+local reader = qcd.qdpc.Reader()
+
+-- Open the file for reading
+local file = reader:open(file_path)
+
+-- Read the gauge field U
+local U = reader:readGauge(file)
+
+-- Close the file
+reader:close(file)
+
+-- Access the gauge field components
+local Nc = U.Nc
+local Nd = U.Nd
+local dimensions = U.dimensions
+local data = U.data
+
+-- Print the extracted information
+print("Number of colors (Nc): " .. Nc)
+print("Number of dimensions (Nd): " .. Nd)
+print("Dimensions: " .. dimensions[1] .. " x " .. dimensions[2] .. " x " .. dimensions[3] .. " x " .. dimensions[4])
+
+-- Access the gauge field data
+print("Gauge field data:")
+for i = 1, dimensions[1] do
+  for j = 1, dimensions[2] do
+    for k = 1, dimensions[3] do
+      for t = 1, dimensions[4] do
+        print("U[" .. i .. "," .. j .. "," .. k .. "," .. t .. "]:")
+        for c = 1, Nc do
+          for d = 1, Nd do
+            print(data[i][j][k][t][c][d])
+          end
+        end
+      end
+    end
+  end
+end

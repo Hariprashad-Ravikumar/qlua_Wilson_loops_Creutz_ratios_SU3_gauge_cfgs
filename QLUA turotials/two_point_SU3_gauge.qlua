@@ -1,0 +1,103 @@
+
+
+require "stdlib"
+require "gauge"
+L = qcd.lattice{4,4,4,8}
+volume = 1
+for i = 0, #L - 1 do
+  volume = volume * L[i]
+end
+
+qcd.Nc = 3
+
+r = { } 
+do
+  r.x = os.random()
+  local x = L:Int(r.x)
+  for i = 0, #L - 1 do
+    r[i+1] = os.random()
+    x = x * L[i] + L:pcoord(i) * r[i+1]
+  end
+  r.f = os.random()
+  S = L:RandomState(r.f, x)
+end
+
+
+printf("r.x  = %12d\n", r.x)
+printf("r.f  = %12d\n", r.f)
+for i = 0, #L - 1 do
+  printf("r[%d] = %12d\n", i, r[i+1])
+end
+
+function toSUn(L, X)
+  local Y = (X - X:adjoin()) / 2
+  return (Y - Y:trace() / qcd.Nc * L:ColorMatrix(complex(1,0))):exp()
+end
+
+U = {}
+for i = 0, #L - 1 do
+  U[i+1] = toSUn(L, 0.3 * S:gaussian_ColorMatrix())
+end
+
+
+
+CL = qcd.Clover(U, 0.139727, 1.0, {1,1,1, -1})
+solve = CL:mixed_solver(1e-10, 1000, 1e-25, 2000)
+
+
+src = L:DiracPropagator()
+Nc = src:colors()
+
+
+
+
+
+
+-- compute and save 2pt for pi meason
+
+
+
+
+
+function pi_meson2pt(p3)
+  local h5_writer = qcd.hdf5.Writer("/global/homes/h/hari_8/QLUA_tutorials/Two_point_functions/results_2pt_su3_test.h5")
+  for sx = 0, 3, 2 do
+    for sy = 0, 3, 2 do
+      for sz = 0, 3, 2 do
+        local srcx = sx
+        local srcy = sy
+        local srcz = sz
+        local srct = 0
+        for ic = 0, Nc - 1 do
+          for is = 0, qcd.Ns - 1 do
+            local dv = L:DiracFermion()
+            dv[{srcx,srcy,srcz,srct,c=ic,d=is}] = complex(1,0)
+            src[{c=ic,d=is}] = dv
+          end
+        end
+        local q_prop = solve(src)
+        local a_prop = gamma{mu=5} * q_prop * gamma{mu=5}
+        local qq_15 = qcd.dot(a_prop, gamma{n=15} * q_prop * gamma{n=15})
+        -- Momentum projection
+        local px = 2 * math.pi * p3[1] / L[0]
+        local py = 2 * math.pi * p3[2] / L[1]
+        local pz = 2 * math.pi * p3[3] / L[2]
+        local w = (L:Real(L:pcoord(0)) * px + L:Real(L:pcoord(1)) * py + L:Real(L:pcoord(2)) * pz):expi()  -- plane wave with p=(px,py,pz)
+        local pt2 = (qq_15 * w):sum(L:MultiSet(L[3], L:pcoord(3)))  -- 2pt function
+        local path_to_pt2 = string.format("/twopoint/meson_pi/srcx%dsrcy%dsrcz%d/px%dpy%dpz%d", srcx, srcy, srcz, p3[1], p3[2], p3[3]) 
+        local write_options = { transfer = "collective", precision = "double" }
+        h5_writer:write(path_to_pt2, pt2, write_options)
+      end
+    end
+  end
+  h5_writer:close()
+end
+ 
+moments = {{0,0,0}, 
+           {1,0,0}, 
+           {1,0,1}, 
+           {1,1,1}} 
+
+for m = 1, #moments do 
+  pi_meson2pt(moments[m]) 
+end 
